@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Executive Support Programme: Canonical Reference</title>
+<meta name="description" content="The definitive reference for the Executive Support Programme (ESP) by Mosaic Human Capital Innovations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --teal:#33A6B2;
+  --teal-deep:#338B85;
+  --charcoal:#333333;
+
+  --bg:#FBFCFC;
+  --surface:#FFFFFF;
+  --surface-2:#F3F7F7;
+  --border:#E1E9E9;
+  --border-strong:#C9D6D6;
+  --text:#333333;
+  --text-dim:#5F6E6E;
+  --text-faint:#8B9999;
+  --rail:#DCE6E6;
+
+  --font-display:"DM Serif Display",Georgia,serif;
+  --font-body:"Plus Jakarta Sans",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --sidebar-w:288px;
+  --maxw:820px;
+  --radius:3px;
+  --shadow:0 1px 2px rgba(20,40,40,.04),0 8px 24px -12px rgba(20,40,40,.10);
+}
+[data-theme="dark"]{
+  --bg:#141D1D;
+  --surface:#1B2726;
+  --surface-2:#20302E;
+  --border:#2B3B3A;
+  --border-strong:#3B4E4C;
+  --text:#E6EDEC;
+  --text-dim:#9FB1B0;
+  --text-faint:#718382;
+  --rail:#2B3B3A;
+  --teal:#4CBFCB;
+  --teal-deep:#4FA9A2;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-weight:400;
+  font-size:16.5px;
+  line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+  transition:background .25s ease,color .25s ease;
+}
+
+a{color:inherit}
+::selection{background:var(--teal);color:#fff}
+
+/* ============ LAYOUT ============ */
+.shell{display:flex;min-height:100vh}
+
+/* ---- SIDEBAR ---- */
+.sidebar{
+  width:var(--sidebar-w);
+  flex:0 0 var(--sidebar-w);
+  border-right:1px solid var(--border);
+  background:var(--surface);
+  height:100vh;position:sticky;top:0;
+  display:flex;flex-direction:column;
+  z-index:40;
+}
+.brand{
+  padding:26px 22px 18px;
+  border-bottom:1px solid var(--border);
+}
+.brand-mark{
+  font-family:var(--font-display);
+  font-size:26px;line-height:1.1;letter-spacing:-.01em;
+  color:var(--text);
+}
+.brand-mark em{font-style:italic;color:var(--teal-deep)}
+.brand-sub{
+  font-family:var(--font-mono);
+  font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--text-faint);margin-top:8px;
+}
+
+.search-wrap{padding:16px 18px;border-bottom:1px solid var(--border);position:relative}
+.search-input{
+  width:100%;background:var(--surface-2);border:1px solid var(--border);
+  border-radius:var(--radius);padding:9px 11px 9px 32px;
+  font-family:var(--font-body);font-size:13.5px;color:var(--text);
+  outline:none;transition:border-color .15s;
+}
+.search-input:focus{border-color:var(--teal)}
+.search-input::placeholder{color:var(--text-faint)}
+.search-icon{
+  position:absolute;left:28px;top:50%;transform:translateY(-50%);
+  width:13px;height:13px;opacity:.45;pointer-events:none;
+}
+.search-results{
+  position:absolute;left:18px;right:18px;top:calc(100% - 6px);
+  background:var(--surface);border:1px solid var(--border-strong);
+  box-shadow:var(--shadow);border-radius:var(--radius);
+  max-height:340px;overflow-y:auto;z-index:60;display:none;
+}
+.search-results.open{display:block}
+.sr-item{
+  display:block;padding:9px 12px;border-bottom:1px solid var(--border);
+  text-decoration:none;cursor:pointer;
+}
+.sr-item:last-child{border-bottom:0}
+.sr-item:hover,.sr-item:focus{background:var(--surface-2);outline:none}
+.sr-kind{
+  font-family:var(--font-mono);font-size:8.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teal-deep);
+}
+.sr-title{font-size:13.5px;font-weight:500;margin-top:2px;color:var(--text)}
+.sr-empty{padding:14px 12px;font-size:13px;color:var(--text-faint)}
+
+.nav{flex:1;overflow-y:auto;padding:18px 0 40px}
+.nav-group{margin-bottom:22px}
+.nav-label{
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--text-faint);
+  padding:0 22px 8px;
+}
+.nav-link{
+  display:block;padding:6px 22px;font-size:14px;color:var(--text-dim);
+  text-decoration:none;border-left:2px solid transparent;
+  transition:color .12s,border-color .12s,background .12s;
+}
+.nav-link:hover{color:var(--text);background:var(--surface-2)}
+.nav-link.active{color:var(--teal-deep);border-left-color:var(--teal);font-weight:600;background:var(--surface-2)}
+.nav-link:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+
+/* curriculum tree */
+.tree-phase{margin-bottom:2px}
+.tree-toggle{
+  width:100%;text-align:left;background:none;border:0;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  padding:6px 22px;font-family:var(--font-body);
+  font-size:12.5px;font-weight:600;color:var(--text-dim);
+  letter-spacing:.01em;
+}
+.tree-toggle:hover{color:var(--text)}
+.tree-toggle:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+.chev{width:9px;height:9px;transition:transform .18s;flex:0 0 9px;opacity:.6}
+.tree-phase.open .chev{transform:rotate(90deg)}
+.tree-body{display:none;padding-bottom:6px}
+.tree-phase.open .tree-body{display:block}
+.tree-link{
+  display:flex;gap:10px;align-items:baseline;
+  padding:5px 22px 5px 40px;font-size:13.5px;color:var(--text-dim);
+  text-decoration:none;border-left:2px solid transparent;
+}
+.tree-link:hover{color:var(--text);background:var(--surface-2)}
+.tree-link.active{color:var(--teal-deep);border-left-color:var(--teal);font-weight:600;background:var(--surface-2)}
+.tree-wk{font-family:var(--font-mono);font-size:10px;color:var(--text-faint);flex:0 0 24px}
+.tree-link.active .tree-wk{color:var(--teal)}
+
+.side-foot{
+  border-top:1px solid var(--border);padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.theme-btn{
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text-dim);
+  border-radius:var(--radius);padding:6px 10px;cursor:pointer;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+}
+.theme-btn:hover{color:var(--text);border-color:var(--border-strong)}
+.theme-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.print-btn{
+  background:none;border:0;color:var(--text-faint);cursor:pointer;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+}
+.print-btn:hover{color:var(--teal-deep)}
+
+/* ---- MAIN ---- */
+.main{flex:1;min-width:0}
+.topbar{
+  display:none;position:sticky;top:0;z-index:50;
+  background:var(--surface);border-bottom:1px solid var(--border);
+  padding:12px 18px;align-items:center;gap:12px;
+}
+.burger{background:none;border:1px solid var(--border);border-radius:var(--radius);padding:7px 9px;cursor:pointer;color:var(--text)}
+.content{padding:56px 48px 120px;max-width:calc(var(--maxw) + 96px);margin:0 auto}
+
+/* breadcrumbs */
+.crumbs{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--text-faint);margin-bottom:26px;
+  display:flex;gap:9px;flex-wrap:wrap;align-items:center;
+}
+.crumbs a{color:var(--text-faint);text-decoration:none}
+.crumbs a:hover{color:var(--teal-deep)}
+.crumbs span.sep{opacity:.4}
+.crumbs .cur{color:var(--teal-deep)}
+
+/* type */
+.eyebrow{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--teal-deep);margin-bottom:14px;
+}
+h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(34px,4.6vw,52px);line-height:1.08;letter-spacing:-.015em;
+  margin-bottom:20px;color:var(--text);
+}
+h1 em{font-style:italic;color:var(--teal-deep)}
+h2{
+  font-family:var(--font-display);font-weight:400;
+  font-size:27px;line-height:1.24;letter-spacing:-.01em;
+  margin:52px 0 16px;padding-top:10px;
+}
+h3{
+  font-family:var(--font-body);font-weight:600;
+  font-size:15.5px;letter-spacing:.005em;
+  margin:32px 0 10px;
+}
+h4{
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--text-faint);
+  margin:26px 0 10px;font-weight:500;
+}
+p{margin-bottom:16px;color:var(--text-dim)}
+p strong{color:var(--text);font-weight:600}
+.lede{font-size:19px;line-height:1.6;color:var(--text);margin-bottom:30px}
+ul,ol{margin:0 0 18px 20px;color:var(--text-dim)}
+li{margin-bottom:7px;padding-left:3px}
+li::marker{color:var(--teal)}
+hr{border:0;border-top:1px solid var(--border);margin:44px 0}
+
+/* rule under h2 */
+h2::after{
+  content:"";display:block;width:34px;height:2px;background:var(--teal);
+  margin-top:14px;opacity:.55;
+}
+
+/* ---- SIGNATURE: THE SPINE ---- */
+.spine{margin:44px 0 10px;border-left:1px solid var(--rail);padding-left:0}
+.spine-row{
+  display:grid;grid-template-columns:56px 1fr;gap:0;
+  position:relative;
+}
+.spine-wk{
+  font-family:var(--font-mono);font-size:10.5px;color:var(--text-faint);
+  padding:15px 0 15px 16px;position:relative;
+}
+.spine-wk::before{
+  content:"";position:absolute;left:-4.5px;top:22px;
+  width:7px;height:7px;border-radius:50%;
+  background:var(--bg);border:1.5px solid var(--rail);
+}
+.spine-row.gate .spine-wk::before{background:var(--teal);border-color:var(--teal)}
+.spine-row.touch .spine-wk::before{background:var(--teal-deep);border-color:var(--teal-deep)}
+.spine-body{
+  padding:14px 0 14px 6px;border-bottom:1px solid var(--border);
+}
+.spine-row:last-child .spine-body{border-bottom:0}
+.spine-title{
+  font-size:15px;font-weight:600;color:var(--text);text-decoration:none;
+  display:inline-block;
+}
+.spine-title:hover{color:var(--teal-deep)}
+.spine-meta{font-size:13px;color:var(--text-faint);margin-top:3px}
+.spine-tag{
+  display:inline-block;margin-top:7px;
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--teal-deep);border:1px solid var(--teal);border-radius:2px;
+  padding:2px 6px;opacity:.9;
+}
+.phase-head{
+  display:flex;align-items:baseline;gap:14px;
+  padding:26px 0 8px 16px;margin-left:-1px;
+  border-left:2px solid var(--teal);
+}
+.phase-head .pn{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal-deep)}
+.phase-head .pt{font-family:var(--font-display);font-size:20px}
+.phase-head .pd{font-size:13px;color:var(--text-faint);margin-left:auto}
+
+/* ---- CARDS ---- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:24px 0}
+.card{
+  border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--surface);padding:18px 18px 16px;
+  text-decoration:none;display:block;
+  transition:border-color .15s,transform .15s;
+}
+.card:hover{border-color:var(--teal);transform:translateY(-1px)}
+.card:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+.card-k{font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-faint)}
+.card-t{font-size:15px;font-weight:600;color:var(--text);margin:7px 0 5px;line-height:1.35}
+.card-d{font-size:13.5px;color:var(--text-dim);line-height:1.5}
+
+/* ---- CALLOUT ---- */
+.callout{
+  border:1px solid var(--border);border-left:2px solid var(--teal);
+  background:var(--surface-2);border-radius:var(--radius);
+  padding:18px 20px;margin:26px 0;
+}
+.callout h4{margin-top:0;color:var(--teal-deep)}
+.callout p:last-child{margin-bottom:0}
+.callout.gate{border-left-color:var(--charcoal)}
+[data-theme="dark"] .callout.gate{border-left-color:var(--text-dim)}
+
+/* ---- TABLE ---- */
+.tbl{width:100%;border-collapse:collapse;margin:22px 0;font-size:14px}
+.tbl th{
+  text-align:left;font-family:var(--font-mono);font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);
+  font-weight:500;padding:0 14px 9px 0;border-bottom:1px solid var(--border-strong);
+}
+.tbl td{padding:12px 14px 12px 0;border-bottom:1px solid var(--border);color:var(--text-dim);vertical-align:top}
+.tbl td:first-child{color:var(--text);font-weight:500;white-space:nowrap}
+.tbl tr:last-child td{border-bottom:0}
+
+/* ---- PILLS / META ---- */
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 30px}
+.pill{
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--border-strong);border-radius:2px;padding:4px 8px;color:var(--text-dim);
+}
+.pill.on{border-color:var(--teal);color:var(--teal-deep)}
+
+/* ---- QUESTION BLOCK ---- */
+.q{
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 18px;margin:14px 0;background:var(--surface);
+}
+.q-arch{
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-deep);margin-bottom:8px;
+}
+.q-stem{color:var(--text);font-size:14.5px;margin-bottom:10px}
+.q-opts{list-style:none;margin:0 0 10px}
+.q-opts li{
+  font-size:13.5px;color:var(--text-dim);margin-bottom:5px;padding-left:22px;position:relative;
+}
+.q-opts li::before{
+  content:attr(data-k);position:absolute;left:0;top:0;
+  font-family:var(--font-mono);font-size:10px;color:var(--text-faint);
+}
+.q-opts li.key{color:var(--text)}
+.q-opts li.key::before{color:var(--teal)}
+.q-why{
+  font-size:13px;color:var(--text-faint);border-top:1px solid var(--border);
+  padding-top:9px;margin-top:4px;
+}
+.q-why b{color:var(--teal-deep);font-weight:600}
+
+/* ---- RUBRIC ---- */
+.rub{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin:20px 0}
+.rub-head{
+  background:var(--surface-2);padding:12px 16px;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+}
+.rub-name{font-weight:600;font-size:14.5px;color:var(--text)}
+.rub-w{font-family:var(--font-mono);font-size:10px;color:var(--teal-deep);letter-spacing:.1em}
+.rub-band{display:grid;grid-template-columns:96px 1fr;gap:0;border-bottom:1px solid var(--border)}
+.rub-band:last-child{border-bottom:0}
+.rub-lvl{
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--text-faint);padding:12px 12px 12px 16px;background:var(--surface);
+  border-right:1px solid var(--border);
+}
+.rub-desc{padding:12px 16px;font-size:13.5px;color:var(--text-dim);background:var(--surface)}
+
+/* ---- PROGRESS ---- */
+.prog{margin:30px 0 10px}
+.prog-bar{height:2px;background:var(--rail);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--teal);width:0;transition:width .4s ease}
+.prog-labels{
+  display:flex;justify-content:space-between;margin-top:8px;
+  font-family:var(--font-mono);font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--text-faint);
+}
+.done-btn{
+  margin-top:20px;background:var(--surface);border:1px solid var(--border-strong);
+  border-radius:var(--radius);padding:9px 14px;cursor:pointer;color:var(--text-dim);
+  font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+}
+.done-btn:hover{border-color:var(--teal);color:var(--teal-deep)}
+.done-btn.on{background:var(--teal);border-color:var(--teal);color:#fff}
+.done-btn:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+/* ---- PAGER ---- */
+.pager{display:flex;justify-content:space-between;gap:16px;margin-top:64px;padding-top:26px;border-top:1px solid var(--border)}
+.pager a{
+  text-decoration:none;flex:1;padding:14px 16px;border:1px solid var(--border);
+  border-radius:var(--radius);transition:border-color .15s;
+}
+.pager a:hover{border-color:var(--teal)}
+.pager .dir{font-family:var(--font-mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint)}
+.pager .ttl{font-size:14px;font-weight:600;color:var(--text);margin-top:4px}
+.pager .next{text-align:right}
+
+/* ---- ANCHOR LIST ---- */
+.anchors{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 6px}
+.anchor-chip{
+  font-size:12.5px;text-decoration:none;color:var(--text-dim);
+  border:1px solid var(--border);border-radius:2px;padding:5px 10px;
+}
+.anchor-chip:hover{border-color:var(--teal);color:var(--teal-deep)}
+
+/* ---- FAQ ---- */
+details{border-bottom:1px solid var(--border);padding:14px 0}
+summary{cursor:pointer;font-weight:600;font-size:14.5px;color:var(--text);list-style:none;display:flex;gap:10px;align-items:flex-start}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font-family:var(--font-mono);color:var(--teal);flex:0 0 12px}
+details[open] summary::before{content:"–"}
+details p{margin:12px 0 0 22px;font-size:14px}
+summary:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+/* ---- GLOSSARY ---- */
+.gloss{border-top:1px solid var(--border)}
+.gloss-row{display:grid;grid-template-columns:190px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--border)}
+.gloss-t{font-weight:600;font-size:14px;color:var(--text)}
+.gloss-d{font-size:14px;color:var(--text-dim)}
+
+/* ---- MOBILE ---- */
+.scrim{display:none;position:fixed;inset:0;background:rgba(15,25,25,.45);z-index:35}
+.scrim.on{display:block}
+@media (max-width:960px){
+  .sidebar{position:fixed;left:0;top:0;transform:translateX(-100%);transition:transform .22s ease}
+  .sidebar.open{transform:none}
+  .topbar{display:flex}
+  .content{padding:32px 22px 90px}
+  .gloss-row{grid-template-columns:1fr;gap:4px}
+  .rub-band{grid-template-columns:1fr}
+  .rub-lvl{border-right:0;border-bottom:1px solid var(--border)}
+  .pager{flex-direction:column}
+  .pager .next{text-align:left}
+}
+
+/* ---- PRINT ---- */
+@media print{
+  .sidebar,.topbar,.pager,.done-btn,.scrim,.print-btn,.theme-btn{display:none!important}
+  body{background:#fff;color:#000;font-size:11pt}
+  .content{padding:0;max-width:none}
+  .card,.q,.callout,.rub{break-inside:avoid;border-color:#bbb}
+  h1{font-size:24pt}h2{font-size:15pt;margin-top:22pt}
+  a{color:#000;text-decoration:none}
+  .spine-row{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim" aria-hidden="true"></div>
+
+<div class="shell">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar" id="sidebar" aria-label="Programme navigation">
+    <div class="brand">
+      <div class="brand-mark">Executive<br><em>Support</em> Programme</div>
+      <div class="brand-sub">Canonical Reference · v2</div>
+    </div>
+
+    <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4.6"/><path d="M10.5 10.5L14 14"/></svg>
+      <input class="search-input" id="search" type="search" placeholder="Search the programme" autocomplete="off" aria-label="Search" />
+      <div class="search-results" id="searchResults" role="listbox"></div>
+    </div>
+
+    <nav class="nav" id="nav"></nav>
+
+    <div class="side-foot">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle colour theme">Dark</button>
+      <button class="print-btn" onclick="window.print()">Print</button>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <div class="main">
+    <div class="topbar">
+      <button class="burger" id="burger" aria-label="Open navigation">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+      </button>
+      <strong style="font-size:14px">ESP Reference</strong>
+    </div>
+    <main class="content" id="view" tabindex="-1"></main>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   DATA
+   ===================================================================== */
+
+const SCOUTED = [
+  { id:"self-awareness", letter:"S", name:"Self-Awareness", weight:"15%",
+    def:"Accurate perception of your own capability, bias, emotional state, and effect on others. The dimension that makes every other dimension improvable.",
+    entry:true,
+    bands:{
+      distinguished:"Names a limitation before anyone else does, describes its operational cost precisely, and shows evidence of a correction already in motion.",
+      proficient:"Identifies real limitations and can trace how they show up in work. Correction is planned rather than demonstrated.",
+      developing:"Acknowledges limitations in general terms. Little connection drawn between self-knowledge and professional consequence.",
+      insufficient:"Describes strengths only, or frames limitations as strengths in disguise."
+    }},
+  { id:"conceptual-thinking", letter:"C", name:"Conceptual Thinking", weight:"15%",
+    def:"The ability to see the shape of a problem before solving it. Structure imposed on ambiguity.",
+    entry:true,
+    bands:{
+      distinguished:"Restructures the problem before answering it, surfaces the constraint others missed, and the resulting solution is simpler than the problem appeared.",
+      proficient:"Breaks the problem into parts correctly and works through them in sensible order.",
+      developing:"Solves the problem as presented without examining whether it was framed correctly.",
+      insufficient:"Responds to the surface of the request. No underlying structure is identified."
+    }},
+  { id:"openness-to-learning", letter:"O", name:"Openness to Learning", weight:"12%",
+    def:"Willingness to be wrong in public, adjust quickly, and treat feedback as information rather than injury.",
+    entry:false,
+    bands:{
+      distinguished:"Seeks the feedback that is hardest to hear, integrates it visibly within the same programme cycle, and can name what changed.",
+      proficient:"Receives feedback well and acts on it. Does not typically go looking for it.",
+      developing:"Accepts feedback without defensiveness but shows limited change in subsequent work.",
+      insufficient:"Explains rather than absorbs. Feedback is met with justification."
+    }},
+  { id:"utilitarian-thinking", letter:"U", name:"Utilitarian Thinking", weight:"15%",
+    def:"Sound judgment about what matters most, under real constraint, when everything appears urgent.",
+    entry:true,
+    bands:{
+      distinguished:"Prioritises against the executive's actual objective rather than the loudest request, and can articulate the cost of what was deliberately deprioritised.",
+      proficient:"Prioritises correctly using a defensible framework. Tradeoffs are acknowledged.",
+      developing:"Prioritises by urgency signal alone. Tradeoffs are made but not examined.",
+      insufficient:"Attempts everything, or defers the decision upward without analysis."
+    }},
+  { id:"team-awareness", letter:"T", name:"Team Awareness", weight:"11%",
+    def:"Understanding of how information, access, and influence move through an organisation, and where you sit inside that flow.",
+    entry:false,
+    bands:{
+      distinguished:"Maps the informal system as accurately as the formal one, and manages access without the executive needing to intervene.",
+      proficient:"Understands roles, reporting lines, and appropriate access tiers. Applies them consistently.",
+      developing:"Understands the organisational chart. Misses the dynamics that the chart does not show.",
+      insufficient:"Treats all stakeholders identically, or routes everything to the executive."
+    }},
+  { id:"empathy-practice", letter:"E", name:"Empathy Practice", weight:"12%",
+    def:"Empathy as an operational discipline rather than a disposition. Anticipation grounded in accurate reading of another person's state.",
+    entry:false,
+    bands:{
+      distinguished:"Anticipates need before it is expressed, and calibrates the response to what the person can absorb in that moment.",
+      proficient:"Reads the room accurately and adjusts approach. Response follows the signal rather than preceding it.",
+      developing:"Notices emotional state but does not consistently adjust behaviour in response.",
+      insufficient:"Applies a fixed register regardless of context."
+    }},
+  { id:"drive", letter:"D", name:"Drive", weight:"20%",
+    def:"Sustained effort in the absence of supervision. The dimension that most reliably predicts placement outcome.",
+    entry:true,
+    bands:{
+      distinguished:"Finishes work nobody is checking, to a standard nobody demanded, and treats the standard as the point.",
+      proficient:"Completes all work to standard, on time, without prompting.",
+      developing:"Completes work when prompted or when a deadline is imminent.",
+      insufficient:"Work is late, incomplete, or requires repeated intervention."
+    }}
+];
+
+const EOB = [
+  { id:"partnership-philosophy", name:"Partnership Philosophy", weeks:[1], weight:"15%",
+    what:"Your position on what executive support is for, and what kind of professional you intend to be inside that role.",
+    assesses:["self-awareness","conceptual-thinking"] },
+  { id:"communication-protocol", name:"Communication Protocol Suite", weeks:[2], weight:"15%",
+    what:"Your reusable frameworks for writing, speaking, and documenting on behalf of an executive across contexts and channels.",
+    assesses:["empathy-practice","team-awareness"] },
+  { id:"workflow-blueprint", name:"Workflow Blueprint", weeks:[4,10], weight:"20%",
+    what:"The designed operational environment you would deploy in your first week with a client, including stakeholder routing and project scaffolding.",
+    assesses:["conceptual-thinking","utilitarian-thinking"] },
+  { id:"decision-protocol", name:"Decision-Making Protocol", weeks:[6,7], weight:"20%",
+    what:"Your explicit framework for escalation, deferral, autonomous action, and confidentiality under pressure.",
+    assesses:["utilitarian-thinking","team-awareness"] },
+  { id:"technology-stack", name:"Technology Stack", weeks:[4,5], weight:"15%",
+    what:"Your curated tool ecosystem and automation library, with a stated rationale for every inclusion and every exclusion.",
+    assesses:["conceptual-thinking","openness-to-learning"] },
+  { id:"operating-principles", name:"Personal Operating Principles", weeks:[3,11], weight:"15%",
+    what:"Your professional values, boundaries, energy systems, and ethical lines, written to be held to.",
+    assesses:["self-awareness","drive"] }
+];
+
+const PHASES = [
+  { n:"Phase One", t:"Foundation", weeks:"Weeks 1–4",
+    d:"Who the executive support professional is, and how they think before they act.", range:[1,4] },
+  { n:"Phase Two", t:"Capability", weeks:"Weeks 5–8",
+    d:"The operational toolkit. Fluency, discretion, judgment, and the systems that hold them.", range:[5,8] },
+  { n:"Phase Three", t:"Application", weeks:"Weeks 9–12",
+    d:"Pressure, complexity, endurance, and the assembly of everything built so far.", range:[9,12] },
+  { n:"Phase Four", t:"Graduation", weeks:"Weeks 13–14",
+    d:"Formal assessment, placement orientation, and the public defence of your work.", range:[13,14] }
+];
+
+/* ---------- SESSIONS ---------- */
+const SESSIONS = [
+{
+ w:1, slug:"who-are-you-working-for", title:"Who Are You Working For?", phase:0,
+ thesis:"Every failure in this profession traces back to a person who understood their tasks and misunderstood their role.",
+ intro:"The programme opens by removing the assumption most learners arrive with: that executive support is a service function performed well. It is not. It is an operating partnership in which one person holds the strategy and another holds the machinery that makes the strategy survive contact with a week. This session establishes the distinction and introduces SCOUTED, the framework against which every learner is assessed from this point forward.",
+ objectives:[
+  "Distinguish the task executor from the operational partner using observable behaviour rather than seniority or title.",
+  "Locate yourself on each of the seven SCOUTED dimensions with evidence, not impression.",
+  "State a defensible position on what executive support exists to produce."
+ ],
+ outcomes:[
+  "Learners can identify, in a live scenario, which of two competent responses reflects partnership and which reflects execution.",
+  "Learners can name their strongest and weakest SCOUTED dimension and cite a specific incident supporting each."
+ ],
+ flow:[
+  ["0:00","Cold open. Two recordings of the same request handled differently. Learners judge before they are taught."],
+  ["0:20","The partnership thesis. Why proximity to a decision changes the nature of the work."],
+  ["0:45","SCOUTED introduced dimension by dimension, each with a behavioural anchor."],
+  ["1:10","Self-location exercise. Learners place themselves and defend the placement to the group."],
+  ["1:25","Assignment brief and close."]
+ ],
+ activity:"Two Responses. Learners are given one executive request and two competent replies. Both are correct. One is partnership. They must argue which, and the argument is the assessment.",
+ reflect:"Write the sentence you would want your executive to use when describing you to a peer. Then write the sentence they would use today.",
+ eob:"partnership-philosophy",
+ assignment:{
+  id:"a1", kind:"Structured deliverable", due:"Friday, Week 1",
+  brief:"Produce the first component of your Executive Operating Blueprint: a Partnership Philosophy. This is a position, not a definition. It should be readable by a stranger and recognisable as yours.",
+  fields:[
+   "What executive support exists to produce, in your own words, in no more than eighty words.",
+   "The clearest example from your own working life of the difference between executing a task and holding an outcome.",
+   "Your strongest SCOUTED dimension, with one specific incident as evidence.",
+   "Your weakest SCOUTED dimension, the operational cost it has already caused, and what you will do about it across the next thirteen weeks."
+  ],
+  criteria:[
+   ["Specificity of evidence","Claims are anchored to incidents with consequences, not to self-description."],
+   ["Quality of distinction","The task-versus-outcome example demonstrates real understanding rather than restating the lecture."],
+   ["Honesty of self-location","The stated weakness is a genuine weakness with a real cost attached."],
+   ["Written precision","No filler. A stranger could read this and know something true about the writer."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"Your executive forwards you an email from a board member with the single word: <em>Thoughts?</em> The email proposes moving a strategic review forward by three weeks. You have no context on why the board member wants this.",
+    opts:[
+     ["A","Reply to your executive with a summary of what moving the review would disturb on the calendar."],
+     ["B","Ask your executive what they are actually asking you for before responding."],
+     ["C","Reply with your read on the request, the two calendar consequences, and the single question you would want answered before deciding."],
+     ["D","Forward the email to the chief of staff who owns the review timeline."]
+    ], key:2,
+    why:"A is competent execution: it answers the calendar question nobody asked. B is safe but converts you into a cost rather than a support. D is correct routing and abdicates the thinking. C treats <em>Thoughts?</em> as what it is, an invitation to think, and returns judgment plus the one thing you genuinely cannot know." },
+  { arch:"Justify the tradeoff", stem:"Two learners describe their role. The first says: <em>I protect my executive's time.</em> The second says: <em>I protect my executive's attention.</em> Both are defensible. Argue for one in under 120 words, and state precisely what the other position gets wrong.",
+    freeform:true,
+    why:"There is no key. The assessment is whether the learner recognises that time is a container and attention is the asset, and whether they can concede what is real in the position they reject. Answers that dismiss the other position score lower than answers that defeat it." },
+  { arch:"Spot the error", stem:"A learner writes in their Partnership Philosophy: <em>I am detail-oriented, highly organised, and passionate about supporting leaders to achieve their vision.</em> Identify the three failures in this sentence.",
+    freeform:true,
+    why:"It is unfalsifiable, it is indistinguishable from every other applicant, and it describes disposition rather than commitment. The strongest answers also notice that no executive has ever been failed by an assistant who lacked passion." }
+ ],
+ reading:[
+  ["The Effective Executive, Peter Drucker","Chapters 1 and 2 only. Read for the definition of effectiveness as a habit rather than a talent."],
+  ["ESP SCOUTED Framework","The full rubric. Read all seven dimensions before Session 2."]
+ ],
+ instructor:"Do not defend SCOUTED when it is challenged in this session. Let a learner argue against a dimension and ask the cohort to adjudicate. The framework earns its authority by surviving the argument, not by being asserted."
+},
+{
+ w:2, slug:"words-that-work", title:"Words That Work", phase:0,
+ thesis:"You will be judged, permanently and largely without appeal, on writing you produced in under four minutes.",
+ intro:"An executive assistant's writing is the executive's writing as far as the reader is concerned. This session treats professional communication as an engineering problem: given a reader, a constraint, and a desired action, what is the minimum structure that produces the action. Track divergence begins here. Remote learners work on asynchronous written presence. In-person learners work on the physical register of an executive environment.",
+ objectives:[
+  "Structure an executive-facing email so the reader knows the required action within the first sentence.",
+  "Convert unstructured meeting notes into a document a person who was absent can act on.",
+  "Handle an ambiguous instruction in writing without either guessing silently or escalating unnecessarily."
+ ],
+ outcomes:[
+  "Learners can rewrite a bloated executive email to half its length without losing a single decision point.",
+  "Learners state their assumption explicitly when acting under ambiguity, in a form that invites correction cheaply."
+ ],
+ flow:[
+  ["0:00","The four-minute email. Learners write under timer, then read each other's aloud."],
+  ["0:25","Structure: action first, context second, options third, close with the decision required."],
+  ["0:50","Meeting documentation. From transcript to decision record."],
+  ["1:10","Ambiguity protocol. How to state an assumption so that correcting it costs nothing."],
+  ["1:25","Track split. EVA: async presence and on-camera standard. EPA: physical register and room behaviour."]
+ ],
+ activity:"Halve It. Learners receive a real 320-word executive email and must reduce it to 160 words with every decision point intact. The cohort votes on which cuts were losses.",
+ reflect:"Find the last message you sent that required a follow-up message to clarify it. What was missing from the first one?",
+ eob:"communication-protocol",
+ assignment:{
+  id:"a2", kind:"Tool-build", due:"Friday, Week 2",
+  brief:"Produce three communication artifacts using the supplied templates. These become your Communication Protocol Suite. Each is checked against an objective rubric before human review.",
+  fields:[
+   "An executive-facing email resolving a scheduling conflict between two parties who both believe they have priority.",
+   "A meeting summary produced from the supplied raw notes, written for a person who was not in the room and must act on it.",
+   "A written response to the supplied ambiguous instruction, in which you state the assumption you made, the action you took, and the cost of that assumption being wrong."
+  ],
+  criteria:[
+   ["Action clarity","The required action is unmistakable within the first two sentences of every artifact."],
+   ["Compression","No sentence survives that does not carry a decision, a constraint, or a courtesy that is doing real work."],
+   ["Discretion","Neither party in the scheduling conflict could read the email and feel diminished."],
+   ["Assumption handling","The stated assumption is correctable in one line by the executive."]
+  ]
+ },
+ questions:[
+  { arch:"Spot the error", stem:"An assistant writes to a partner organisation: <em>Just following up on my last email — wanted to check if you'd had a chance to look at the proposal? No rush at all, whenever suits you!</em> The proposal has a hard deadline in six days. Identify every failure.",
+    freeform:true,
+    why:"Four failures. The apology posture (<em>just</em>) surrenders standing. The question mark on a statement invites nothing. <em>No rush</em> is false and the recipient knows it. The deadline, the only load-bearing fact, is absent. The strongest answers observe that the writer has protected their own comfort at the executive's expense." },
+  { arch:"Scenario-judgment", stem:"Your executive asks you to <em>sort out the Tuesday thing</em>. There are two things on Tuesday. You are reasonably confident which one they mean.",
+    opts:[
+     ["A","Ask which one, to be certain."],
+     ["B","Handle the one you believe they mean, and say nothing unless it goes wrong."],
+     ["C","Handle the one you believe they mean, and tell them in one line which one you handled and why."],
+     ["D","Handle both."]
+    ], key:2,
+    why:"A is safe and slow, and it teaches your executive that clarity from them is your precondition for action. B is fast and unrecoverable if wrong. D is expensive and disguises the ambiguity rather than resolving it. C carries the risk yourself while making the correction free. This is the ambiguity protocol in one behaviour." },
+  { arch:"Sequencing", stem:"You receive, within ninety seconds: a board member requesting a call today; a vendor invoice overdue by two weeks; your executive asking where the Q3 numbers are; and a junior colleague asking for feedback on a deck. Rank your first three actions.",
+    freeform:true,
+    why:"Correct sequencing places the Q3 numbers first (your executive is blocked by you), the board member second (external, time-bound, but you can hold it with one line), the invoice third. The junior colleague is not in the first three, and the strongest answers say so explicitly rather than omitting them silently." }
+ ],
+ reading:[
+  ["On Writing Well, William Zinsser","Chapters on simplicity and clutter. Ignore the chapters on memoir."],
+  ["ESP Communication Templates","Supplied in the resource library. Use them. They are not suggestions."]
+ ],
+ instructor:"Read at least three learner emails aloud without naming the author. The cohort hears the filler immediately when it is spoken. They do not see it when it is written."
+},
+{
+ w:3, slug:"carry-it-right", title:"Carry It Right", phase:0,
+ thesis:"Your emotional state is not a private matter. It is an input to someone else's decision-making.",
+ intro:"Most professional training treats disposition as a soft concern. In proximity work it is a hard one. An executive who must manage the mood of the person managing their week has not been supported, they have been given a second job. This session is not about performing positivity. It is about understanding that presence is part of the product, and building the systems that keep it stable when you are not.",
+ objectives:[
+  "Trace a specific instance in which your emotional state produced an operational cost for someone else.",
+  "Construct a personal early-warning system that fires before your state affects your work.",
+  "Distinguish emotional labour that is part of the role from emotional labour that signals a boundary failure."
+ ],
+ outcomes:[
+  "Learners can name their own tells, the signals that appear before they are aware of the state itself.",
+  "Learners can hold the distinction between suppressing a state and managing its transmission."
+ ],
+ flow:[
+  ["0:00","The cost of a mood. Three case accounts from placed graduates, anonymised."],
+  ["0:25","Transmission, not suppression. Why the instruction to <em>be positive</em> produces worse assistants."],
+  ["0:50","Tells. Identifying the signals that precede your own awareness."],
+  ["1:15","Boundary work. Which emotional labour is the job and which is a warning."],
+  ["1:30","Assignment brief and close."]
+ ],
+ activity:"The Tell Inventory. In pairs, learners describe a colleague's tells before describing their own. It is easier to see, and the pair then reports what the exercise revealed about the gap.",
+ reflect:"Describe the last time you were unfair to someone at work. Not wrong. Unfair. What state were you in?",
+ eob:"operating-principles",
+ assignment:{
+  id:"a3", kind:"Structured deliverable", due:"Friday, Week 3",
+  brief:"Complete a disposition audit. This is the first half of your Personal Operating Principles. It will be read only by your facilitator and it will not be shared with the cohort.",
+  fields:[
+   "Three occasions in the past month where your state affected how you showed up professionally. For each: the trigger, what you did, what it cost, and what you would do now.",
+   "Your tells. The signals that appear before you are aware of the state itself, and who else can see them.",
+   "Your early-warning protocol. What you do in the first ten minutes after a tell appears."
+  ],
+  criteria:[
+   ["Specificity","Occasions are real, dated, and have a named cost. Generalities score at insufficient."],
+   ["Causal honesty","The trigger is the actual trigger, not the acceptable one."],
+   ["Protocol viability","The early-warning protocol is executable in ten minutes on a bad day, not on a good one."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"You have had a difficult morning for reasons entirely unrelated to work. Your executive walks in and asks for a fast turnaround on something small. You are short with them without intending to be.",
+    opts:[
+     ["A","Apologise immediately and explain that you have had a difficult morning."],
+     ["B","Say nothing, complete the task well, and let the work speak."],
+     ["C","Apologise briefly, without explanation, and complete the task."],
+     ["D","Apologise later in the day, once you have collected yourself, and explain fully."]
+    ], key:2,
+    why:"A converts your executive into your support. B leaves an unaddressed signal in the room that will be interpreted, probably wrongly. D delays the repair and enlarges it. C repairs the transmission without transferring the load. The explanation is owed to a friend, not to the person whose week you are holding." },
+  { arch:"Justify the tradeoff", stem:"An executive is going through a visible personal crisis. One assistant increases proximity, checking in, absorbing more, staying late. Another holds the professional register exactly as before, changing nothing. Defend one.",
+    freeform:true,
+    why:"Both are defensible and both fail if applied without reading the person. The assessment is whether the learner grounds the choice in the executive's need rather than their own instinct toward warmth or distance. Answers that choose without reference to the specific executive score at developing regardless of which they chose." },
+  { arch:"Spot the error", stem:"An assistant writes in their operating principles: <em>I will always remain calm and professional regardless of circumstance.</em> What is wrong with this as a principle?",
+    freeform:true,
+    why:"It is not a principle, it is a promise nobody can keep, which means it will be broken and then abandoned. Principles must survive their own violation. The strongest answers rewrite it as something like: <em>When I am not calm, I will name it to myself before I speak.</em>" }
+ ],
+ reading:[
+  ["Emotional Agility, Susan David","Chapter 3. Read for the distinction between suppression and regulation."]
+ ],
+ instructor:"This session produces disclosure. Restate the confidentiality standard at the top and enforce it at the first breach. The audit is not shared with the cohort under any circumstance."
+},
+{
+ w:4, slug:"the-machine-behind-the-magic", title:"The Machine Behind the Magic", phase:0,
+ thesis:"A tool without a system is a subscription. The system is the deliverable.",
+ intro:"This is the most technical session of Phase One and the one that most directly produces employable capability. Learners design an executive's full operational environment from nothing: what is tracked, how information moves, where it is reviewed, what escalates and when. The tools are downstream of the design and are treated that way. By the end of the week, every learner has a functioning dashboard they could deploy on their first day with a client.",
+ objectives:[
+  "Design an operational environment from the executive's objectives rather than from the tool's features.",
+  "Build a working dashboard containing a priority view, a review cadence, an escalation trigger, and a communication log.",
+  "Justify the exclusion of a tool as rigorously as its inclusion."
+ ],
+ outcomes:[
+  "Learners produce a deployable dashboard with at least one live automation.",
+  "Learners can explain what breaks in an executive's week if any single component of their design is removed."
+ ],
+ flow:[
+  ["0:00","Diagnosis before design. What an executive's week is actually made of."],
+  ["0:25","The four components. Priority, cadence, escalation, log. Why each exists."],
+  ["0:55","Live build. The facilitator builds a dashboard from empty, narrating every decision."],
+  ["1:20","Tool selection as a consequence, not a starting point."],
+  ["1:30","Assignment brief and close."]
+ ],
+ activity:"Remove One Thing. Learners present a dashboard and the cohort removes a single component. The learner must state precisely what fails, and in which week it fails.",
+ reflect:"What information does your current executive, or your last one, hold only in their head? What happens the day they are unreachable?",
+ eob:"workflow-blueprint",
+ assignment:{
+  id:"a4", kind:"Tool-build", due:"Friday, Week 4",
+  brief:"Build a working executive operational dashboard in a tool of your choosing and submit a live link. Automated checks run on submission. Human review follows.",
+  fields:[
+   "Daily priority view, showing what the executive must decide today.",
+   "Weekly review cadence, built into the system rather than dependent on memory.",
+   "Escalation flagging mechanism, with a stated threshold.",
+   "Communication log covering inbound requests and their disposition.",
+   "At least one working automation or trigger.",
+   "A written rationale of no more than 200 words explaining the structural choices, including one tool you deliberately did not use and why."
+  ],
+  criteria:[
+   ["Completeness","All five structural components present and functional at the submitted link."],
+   ["Design coherence","Components reference one another. An escalation appears in the log. A priority is reviewable."],
+   ["Deployability","A stranger could operate this on day one without the builder present."],
+   ["Rationale","The exclusion is argued as carefully as the inclusions."]
+  ]
+ },
+ questions:[
+  { arch:"Spot the error", stem:"A learner's dashboard has a beautiful daily priority view, a colour-coded project board, and a linked calendar. There is no communication log and no escalation threshold. What fails first, and in which week?",
+    freeform:true,
+    why:"Escalation fails first, and it fails in week one, silently. Without a threshold, every judgment call is made fresh and inconsistently, and the executive learns they cannot predict what reaches them. The log fails second and fails visibly, in the first week where two people claim to have told the assistant the same thing." },
+  { arch:"Scenario-judgment", stem:"Your executive already uses four tools, none of them well, and asks you to introduce a fifth to fix the resulting chaos.",
+    opts:[
+     ["A","Introduce the fifth tool, correctly configured, and migrate the others into it."],
+     ["B","Refuse, and consolidate the existing four into two."],
+     ["C","Audit what each of the four is actually load-bearing for, then propose the smallest change that removes the chaos."],
+     ["D","Introduce the fifth tool as a temporary layer while you plan the consolidation."]
+    ], key:2,
+    why:"A is the common answer and it is a migration project disguised as a fix. B is right in outcome and wrong in method, since you do not yet know what is load-bearing. D adds a fifth tool to a four-tool problem. C is the only option that treats the request as a symptom." },
+  { arch:"Sequencing", stem:"You have three days before your executive returns from travel and you have been asked to have <em>a system</em> in place. Rank your first three actions.",
+    freeform:true,
+    why:"First, determine what decisions the executive makes weekly. Second, determine what information each decision requires and where it currently lives. Third, build the minimum surface that puts that information in front of that decision. Learners who begin by selecting a tool have inverted the problem, and the ranking exposes it." }
+ ],
+ reading:[
+  ["ESP Workflow Architecture Reference","Supplied. The four-component model in full."],
+  ["Notion, ClickUp, Airtable and Sheets: comparative brief","Supplied. Read for constraints, not features."]
+ ],
+ instructor:"Build live and let it go wrong. The learners need to see the design survive a mistake. A perfect demonstration teaches nothing about design."
+},
+{
+ w:5, slug:"your-new-best-friend-is-a-robot", title:"Your New Best Friend Is a Robot", phase:1,
+ thesis:"The question is not whether you use artificial intelligence. It is whether you can say where its judgment ends and yours begins.",
+ intro:"Phase Two opens with capability. Learners develop practical fluency with artificial intelligence as an operational instrument: drafting, research, synthesis, automation, and decision support. The session gives equal weight to the boundary. An assistant who pastes a confidential board memo into a public model has not made an efficiency gain. They have made a disclosure. Learners leave with one working automation and a clear articulation of where the human must remain.",
+ objectives:[
+  "Deploy artificial intelligence across drafting, synthesis, and automation in an executive support workflow.",
+  "State, for a given task, whether the confidentiality profile permits the use of a given tool.",
+  "Identify the point in any automated workflow at which human judgment is non-delegable."
+ ],
+ outcomes:[
+  "Learners build and document one working automation with a stated human checkpoint.",
+  "Learners can refuse an efficiency on confidentiality grounds and explain the refusal to a non-technical executive."
+ ],
+ flow:[
+  ["0:00","What the tools are actually good at, demonstrated, and where they quietly fail."],
+  ["0:30","Confidentiality profiles. A four-tier model for what may be given to which class of tool."],
+  ["0:55","Automation build. Learners construct one workflow live."],
+  ["1:20","The non-delegable checkpoint. Finding it in your own automation."],
+  ["1:30","Assignment brief and close."]
+ ],
+ activity:"Break the Automation. Learners exchange automations and attempt to produce a wrong output that looks right. The exercise finds the missing checkpoint faster than review does.",
+ reflect:"Name a task you have automated or would automate. Now describe the specific wrong output that would be hardest for you to notice.",
+ eob:"technology-stack",
+ assignment:{
+  id:"a5", kind:"Tool-build", due:"Friday, Week 5",
+  brief:"Build one artificial-intelligence-assisted workflow relevant to executive support. Document it to the standard below. This completes your Technology Stack component alongside Week 4.",
+  fields:[
+   "The problem it solves, stated as a cost the executive currently pays.",
+   "The tools used and the configuration, evidenced by screenshots or a screen recording link.",
+   "The confidentiality profile of the data the workflow touches, and why the chosen tool is permissible for it.",
+   "The non-delegable checkpoint: where human judgment remains, and what specifically would go wrong without it.",
+   "One thing you attempted that did not work, and what it taught you."
+  ],
+  criteria:[
+   ["Working artifact","The workflow runs. Screenshots evidence it running, not its configuration screen."],
+   ["Confidentiality reasoning","The tier assignment is correct and the justification is specific to the data, not generic."],
+   ["Checkpoint identification","The named checkpoint is the real one. Learners who name a cosmetic review step score at developing."],
+   ["Failure account","The failure described is a real failure with a lesson, not a humblebrag."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"Your executive asks you to summarise a forty-page confidential acquisition memorandum before a meeting in one hour.",
+    opts:[
+     ["A","Use a public model to summarise it, then verify the summary against the source."],
+     ["B","Summarise it yourself and accept that you will only cover the first fifteen pages."],
+     ["C","Use an enterprise or on-device tool with a confidentiality guarantee if one is available; if not, summarise the decision-relevant sections yourself and tell your executive what you did not cover."],
+     ["D","Ask your executive whether it is acceptable to use a public model."]
+    ], key:2,
+    why:"A is a disclosure regardless of the verification that follows. B is honest and leaves your executive walking into a meeting blind on twenty-five pages. D outsources a judgment that is yours to hold and does so under time pressure. C is the only answer that solves the problem within the constraint and tells the truth about the gap." },
+  { arch:"Justify the tradeoff", stem:"Automating a weekly report saves ninety minutes and introduces a small probability of an undetected factual error. Automating a calendar reconciliation saves twenty minutes and introduces the same probability. Argue which you automate first.",
+    freeform:true,
+    why:"The naive answer optimises for time saved. The correct reasoning is about the detectability and cost of the error. A calendar error surfaces within a day and is cheap. A factual error in a report reaches a decision and may never surface. Time saved is the least important variable in the question and the strongest answers say so." },
+  { arch:"Spot the error", stem:"A learner's automation drafts client emails, sends them automatically if a confidence score exceeds a threshold, and flags the rest for review. Identify the design failure.",
+    freeform:true,
+    why:"The confidence score measures the model's certainty, not the correctness or the appropriateness of the message. High-confidence errors are precisely the ones that will be sent. The checkpoint has been placed where it catches the safe cases and misses the dangerous ones." }
+ ],
+ spaced:[1],
+ reading:[
+  ["ESP Confidentiality Tiering Model","Supplied. Four tiers, worked examples."],
+  ["Co-Intelligence, Ethan Mollick","Chapters 5 and 6. Read for the delegation boundary."]
+ ],
+ instructor:"Do not let this session become a tool demonstration. The confidentiality tiering is the assessable content. The tools will change within a year. The tiering will not."
+},
+{
+ w:6, slug:"lock-it-down", title:"Lock It Down", phase:1,
+ thesis:"Discretion is not silence. It is knowing precisely what a person is entitled to and giving them exactly that.",
+ intro:"Executive support carries access. Contracts, compensation, strategic plans, private communication, and the things an executive says on a bad day. This session treats confidentiality as a designed system rather than a personal virtue: where information rests, who may touch it, what is logged, and what an assistant does in the thirty seconds after they learn something they should not have. Discretion under social pressure is the assessed skill, not discretion in principle.",
+ objectives:[
+  "Classify information against a defined access tier and route it accordingly without consulting the executive.",
+  "Respond to a confidentiality breach, including one you caused, in a way that limits harm rather than blame.",
+  "Withstand social pressure to disclose without damaging the relationship applying it."
+ ],
+ outcomes:[
+  "Learners hold the line under pressure from a peer, which is harder than holding it under pressure from a stranger.",
+  "Learners can document an incident in a form that protects the executive rather than themselves."
+ ],
+ flow:[
+  ["0:00","What you will see. An unsentimental account of the access this role carries."],
+  ["0:25","Tiering and routing. Classification without escalation."],
+  ["0:50","The thirty seconds after. Incident response, including self-caused incidents."],
+  ["1:15","Social pressure drill. Live, uncomfortable, and the point of the session."],
+  ["1:30","Assignment brief and close."]
+ ],
+ activity:"The Friendly Ask. A facilitator, playing a warm and senior colleague, asks three escalating questions about the executive's schedule. Learners hold or fail in front of the cohort. Nobody passes on the first attempt.",
+ reflect:"What is the most sensitive thing you have ever been told at work, and who did you tell?",
+ eob:"decision-protocol",
+ assignment:{
+  id:"a6", kind:"Scenario exercise", due:"Friday, Week 6",
+  brief:"Respond to three confidentiality scenarios of escalating complexity. Each response follows the same four-part structure. This work forms the confidentiality layer of your Decision-Making Protocol.",
+  fields:[
+   "Scenario one: a well-liked colleague asks, in passing, what the executive's Thursday looks like.",
+   "Scenario two: you find a sensitive document open on a shared screen in an empty room.",
+   "Scenario three: you receive a misdirected email containing another team's compensation data.",
+   "For each: what you do immediately, what you document and where, whether and how you inform the executive, and what you change to prevent recurrence."
+  ],
+  criteria:[
+   ["Proportionality","The response fits the breach. Escalating scenario one is as wrong as ignoring scenario three."],
+   ["Documentation","What is written down would protect the executive if read by a third party in six months."],
+   ["Relational intelligence","The colleague in scenario one is not damaged by the refusal."],
+   ["Prevention","The stated change is systemic, not a resolution to be more careful."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"You are copied on an email chain that reveals a senior colleague is being managed out. The colleague, who you like, asks you the next morning whether you have heard anything about restructuring.",
+    opts:[
+     ["A","Say you have not heard anything."],
+     ["B","Say that if you had heard anything, you would not be able to say."],
+     ["C","Say that you are not the right person to ask, and suggest they speak to their manager."],
+     ["D","Say nothing and change the subject."]
+    ], key:2,
+    why:"A is a lie and lies are unrecoverable in this role. B is honest and functions as confirmation, because nobody says that when the answer is no. D is a non-answer that reads as B. C is true, gives them a real next step, and does not require you to lie or confirm. The distinction between A and B is the whole session." },
+  { arch:"Spot the error", stem:"An assistant discovers they mistakenly sent a confidential calendar invite to an external party. They immediately recall the invite, and tell nobody because the recall succeeded.",
+    freeform:true,
+    why:"Recall is not deletion, it is a request. The assistant has substituted a technical action for a disclosure and has made themselves the sole holder of a risk that belongs to the executive. The failure is not the mistake, it is the decision that followed it. Every strong answer identifies that a successful recall changes nothing about the duty to report." },
+  { arch:"Justify the tradeoff", stem:"You learn something in confidence that suggests a colleague is being treated unfairly. Disclosing breaches your executive's trust. Silence permits the unfairness. Argue your position.",
+    freeform:true,
+    why:"There is no clean answer and the assessment penalises learners who pretend there is. Strong responses distinguish between disclosing information and acting on it, identify the routes that do not require disclosure, and are explicit about what they would not do even at cost. Responses that resolve the dilemma too neatly score at developing." }
+ ],
+ spaced:[2],
+ reading:[
+  ["ESP Access Tiering Standard","Supplied."],
+  ["ESP Incident Documentation Template","Supplied. Use it in the assignment."]
+ ],
+ instructor:"The Friendly Ask drill must be genuinely uncomfortable or it does not transfer. Run it with warmth. Warmth is what defeats people, not aggression."
+},
+{
+ w:7, slug:"think-like-the-person-you-support", title:"Think Like the Person You Support", phase:1, checkpoint:"touch",
+ thesis:"Act too slowly and you are a bottleneck. Act too fast and you are a risk. The calibration is the profession.",
+ intro:"This session gives learners an explicit framework for the hardest judgment in executive support: when to act alone. Half the session is instruction. The second half is the mid-programme checkpoint, in which learners present their Blueprint progress to a small group and receive structured peer review. It is not graded. It exists so that nobody discovers in Week 12 that they misunderstood the assignment in Week 1.",
+ objectives:[
+  "Apply a defined escalation framework to classify a decision as autonomous, consultative, or escalated.",
+  "Identify your own directional bias toward over-escalation or under-escalation, with evidence.",
+  "Give and receive structured peer critique on incomplete work without defending it."
+ ],
+ outcomes:[
+  "Learners classify twelve decisions correctly against the framework within eight minutes.",
+  "Learners leave the checkpoint with a written list of the specific gaps in their own Blueprint."
+ ],
+ flow:[
+  ["0:00","The three-way classification. Autonomous, consultative, escalated, and the tests that separate them."],
+  ["0:20","Directional bias. Why over-escalators and under-escalators fail differently and both fail."],
+  ["0:40","Reversibility and cost. The two variables that decide almost every case."],
+  ["0:55","Checkpoint. Breakout groups of five to six. Five minutes each, structured feedback form."],
+  ["1:30","Facilitator close. Common gaps named to the full cohort, no learner identified."]
+ ],
+ activity:"Twelve Decisions. Rapid classification under time pressure. The disagreements, not the answers, are the teaching material.",
+ reflect:"Of the last ten things you escalated, how many could you have decided? Of the last ten you decided, how many should you have escalated?",
+ eob:"decision-protocol",
+ assignment:{
+  id:"a7", kind:"Structured deliverable", due:"Friday, Week 7",
+  brief:"Complete your Decision-Making Protocol for a specific executive context of your choosing. This is the component most closely examined at placement.",
+  fields:[
+   "Your escalation framework: what you decide alone, what you consult on, what you escalate, and the test that assigns each.",
+   "Three worked examples applying the framework to situations with real ambiguity.",
+   "Your directional bias, the evidence for it, and the specific correction you are running.",
+   "The one class of decision you will never take alone, regardless of pressure, and why."
+  ],
+  criteria:[
+   ["Framework operability","A stranger could apply it to a novel case and reach the same answer you would."],
+   ["Worked examples","The examples contain genuine ambiguity. Clear-cut cases score at developing."],
+   ["Bias honesty","The stated bias is corroborated by the examples rather than contradicted by them."],
+   ["The never line","It is a real line, held for a stated reason, not a restatement of policy."]
+  ]
+ },
+ questions:[
+  { arch:"Justify the tradeoff", stem:"A decision is fully reversible and moderately expensive. Another is irreversible and nearly free. Which do you take alone?",
+    freeform:true,
+    why:"Reversibility dominates cost. The free irreversible decision is the dangerous one and it is the one most assistants take alone precisely because it is cheap. The strongest answers note that <em>free</em> almost always means the cost is not being measured in money." },
+  { arch:"Scenario-judgment", stem:"Your executive is unreachable for six hours. A client threatens to withdraw unless a discount is confirmed within the hour. You know the executive has given this discount before, to this client.",
+    opts:[
+     ["A","Confirm the discount. Precedent exists and the cost of losing the client is higher."],
+     ["B","Tell the client you cannot confirm and will revert within six hours."],
+     ["C","Tell the client the discount is under active consideration, that you have escalated it, and that you will revert within six hours with a decision."],
+     ["D","Confirm the discount conditionally, subject to the executive's ratification."]
+    ], key:2,
+    why:"A takes an irreversible commercial decision on the strength of precedent, which is not authority. D is A wearing a coat, and the client will not hear the condition. B is defensible and surrenders the relationship in the interval. C holds the client, commits to nothing, and returns an irreversible decision to the person who owns it. The threat is almost always more elastic than it presents." },
+  { arch:"Sequencing", stem:"You realise at 6pm that you made an autonomous decision this morning that you should have escalated. It has not yet caused harm. Rank your first three actions.",
+    freeform:true,
+    why:"First, determine whether it is still reversible and preserve the reversibility. Second, tell the executive, tonight, before it becomes discovery rather than disclosure. Third, and only third, examine what in your framework produced the misclassification. Learners who begin with self-examination have prioritised their own feelings over the executive's exposure." }
+ ],
+ spaced:[2,3],
+ reading:[
+  ["ESP Escalation Framework","Supplied. Includes the reversibility matrix."]
+ ],
+ instructor:"Protect the checkpoint's time. The instruction will expand to fill the session if permitted, and the checkpoint is the part that changes outcomes."
+},
+{
+ w:8, slug:"everyones-watching", title:"Everyone Is Watching", phase:1, checkpoint:"gate",
+ thesis:"You do not support one person. You manage the traffic of everyone who wants a piece of them.",
+ intro:"An executive sits at the centre of a system of demands, and the assistant is the mechanism by which that system is either survivable or not. This session maps the stakeholder field, assigns access tiers, and designs the triage that runs without the executive's involvement. It closes with a full simulation of an executive workday, run end to end. Phase Two ends here, and so does the programme for anyone who has not met the checkpoint standard.",
+ objectives:[
+  "Map a stakeholder field and assign a defensible access tier to every party.",
+  "Design a triage protocol that resolves the majority of inbound demand without the executive.",
+  "Run a compressed executive workday and account for every decision made inside it."
+ ],
+ outcomes:[
+  "Learners route a novel stakeholder correctly without asking.",
+  "Learners can identify, after simulation, the specific decision at which their day began to fail."
+ ],
+ flow:[
+  ["0:00","The field. Formal structure, informal structure, and the gap between them."],
+  ["0:25","Access tiers and the triage protocol."],
+  ["0:50","Executive workday simulation. Compressed, interrupted, and unfair by design."],
+  ["1:20","Debrief. Where the day broke, and why it broke there."],
+  ["1:30","Checkpoint standard restated. Assignment brief and close."]
+ ],
+ activity:"The Workday. Ninety simulated minutes of an executive's day delivered in twenty-five real ones, with three injected disruptions. Every learner fails somewhere. The debrief locates it.",
+ reflect:"In your last role, who had more access to your executive than they had earned? Who had less?",
+ eob:"workflow-blueprint",
+ assignment:{
+  id:"a8", kind:"Tool-build and scenario", due:"Friday, Week 8",
+  brief:"A two-part submission. Part one extends your Workflow Blueprint with a stakeholder layer. Part two is an unflinching account of your simulation performance.",
+  fields:[
+   "A completed stakeholder map for the supplied executive profile, with access tier, routing rule, and communication protocol for each party.",
+   "The triage protocol: what reaches the executive, what is handled, what is deflected, and the test that decides.",
+   "A written account of the workday simulation: the decision at which your day began to fail, why you made it, and what you would now do.",
+   "The gap the simulation exposed in your Decision-Making Protocol, and the amendment you have made to it."
+  ],
+  criteria:[
+   ["Map fidelity","Informal influence is mapped, not only reporting lines."],
+   ["Triage defensibility","The test is applicable by a stranger to a party not on the map."],
+   ["Simulation honesty","The identified failure is the real one. Learners who identify a trivial failure score at insufficient."],
+   ["Protocol amendment","The amendment addresses the cause of the failure, not its symptom."]
+  ]
+ },
+ questions:[
+  { arch:"Sequencing", stem:"Your executive is in a board meeting for two hours. In that window arrive: their child's school, a journalist on deadline, the CFO with a signature request, and an investor requesting an urgent call. Rank your first three actions.",
+    freeform:true,
+    why:"The school first, always, and it is the answer that most learners rank third. The CFO second, because a signature is a bounded action you can prepare. The journalist third, because deadlines are real and a holding response protects the executive. The investor is fourth and the strongest answers say why: urgency asserted by an investor is a negotiating position, not a fact." },
+  { arch:"Scenario-judgment", stem:"A senior colleague habitually walks past you into your executive's office. Your executive has asked you to manage access more tightly but has not addressed this person directly.",
+    opts:[
+     ["A","Physically intercept and redirect them the next time."],
+     ["B","Raise it with your executive and ask them to speak to the colleague."],
+     ["C","Begin scheduling the colleague proactively, so their access is met before they take it."],
+     ["D","Send the colleague a polite note explaining the new access protocol."]
+    ], key:2,
+    why:"A creates a confrontation you have no standing to win. B is correct in principle and asks your executive to spend capital on a problem you were hired to absorb. D is B by email and lands worse. C removes the need for the behaviour rather than the behaviour itself. Access management is mostly supply management." },
+  { arch:"Spot the error", stem:"A learner's triage protocol routes all requests from direct reports to the executive, and all requests from external parties to themselves. Identify the failure.",
+    freeform:true,
+    why:"The protocol is sorted by the sender's category rather than by the nature of the request, which means a trivial internal question reaches the executive while a consequential external one does not. Triage sorts by what is being asked, not by who is asking. The seniority of the sender is a tiebreak, not a rule." }
+ ],
+ spaced:[4,6],
+ gate:{
+  title:"Progression Checkpoint",
+  body:"Phase Three does not open automatically. To progress, a learner must hold a weekly assessment average of 70% or above across Weeks 1 to 8, and must have submitted all eight assignments. Learners below the standard are contacted privately and given one week to complete outstanding work, after which they are reassessed once. Learners who do not meet the standard after reassessment do not continue. This is stated at admission, restated in Week 1, and applied without exception. It exists because the cohort that enters placement is the cohort that determines whether the next one is trusted."
+ },
+ reading:[
+  ["ESP Stakeholder Tiering Model","Supplied."],
+  ["ESP Workday Simulation Debrief Sheet","Supplied. Complete it within twelve hours of the session."]
+ ],
+ instructor:"Run the simulation genuinely unfairly. Learners who succeed have been under-loaded. The debrief, not the simulation, is where the learning is."
+},
+{
+ w:9, slug:"in-the-deep-end", title:"In the Deep End", phase:2,
+ thesis:"Frameworks are what you build in calm so that you have something to abandon intelligently in a crisis.",
+ intro:"Phase Three begins with pressure. Learners are placed inside a compounding scenario: a founder moving across three time zones, a collapsed calendar, five requests arriving simultaneously, and information that turns out to be wrong. There is no framework that survives this intact, and that is the point. The session assesses triage, composure, and the ability to say afterwards, precisely, what was deprioritised and at what cost.",
+ objectives:[
+  "Triage five simultaneous urgent demands and defend the ordering under interrogation.",
+  "Identify the deliberately deprioritised item and account for its cost.",
+  "Operate on incomplete information and name the gap rather than paper over it."
+ ],
+ outcomes:[
+  "Learners hold composure under compounding failure and continue to produce decisions.",
+  "Learners distinguish, after the fact, between a decision that was wrong and a decision that was right and unlucky."
+ ],
+ flow:[
+  ["0:00","Cold start. The scenario begins without preamble."],
+  ["0:35","First break. What has already gone wrong, and who noticed."],
+  ["0:55","Compounding. New information invalidates an earlier correct decision."],
+  ["1:15","Debrief. The distinction between a bad decision and a bad outcome."],
+  ["1:30","Assignment brief and close."]
+ ],
+ activity:"The Compounding Scenario. Delivered live. One injected fact at minute forty invalidates the most reasonable decision made in the first ten minutes.",
+ reflect:"Describe a decision you made that was correct and turned out badly. Then one that was wrong and turned out well. Which taught you more?",
+ assignment:{
+  id:"a9", kind:"Scenario exercise", due:"Friday, Week 9",
+  brief:"Produce a structured account of your performance in the compounding scenario. Honesty is assessed as rigorously as judgment.",
+  fields:[
+   "Your triage: what you did first, second, and third, and the principle that ordered them.",
+   "The item you deliberately deprioritised, the cost of doing so, and why you accepted that cost.",
+   "The information you needed and did not have, and how you proceeded without it.",
+   "A decision you made that was correct given what you knew, and turned out badly. Distinguish it from one that was simply wrong."
+  ],
+  criteria:[
+   ["Ordering principle","A stated principle, applied consistently, not a post-hoc rationalisation."],
+   ["Cost accounting","The deprioritised item has a named cost borne by a named party."],
+   ["Gap handling","The information gap was named at the time, not discovered in the write-up."],
+   ["Decision versus outcome","The distinction is drawn correctly. This single criterion predicts placement performance more reliably than any other in the programme."]
+  ]
+ },
+ questions:[
+  { arch:"Sequencing", stem:"Your executive lands in a city where their hotel booking has failed, their first meeting has moved forward by an hour, their phone is at four percent, and a contract requires a signature within ninety minutes. Rank your first three actions.",
+    freeform:true,
+    why:"Power first, because every other remedy runs through the device. The meeting second, because it is the only item with an external party already in motion. The contract third: ninety minutes is not ninety seconds, and a signature is reschedulable in a way a room full of people is not. The hotel is not in the first three, and learners who place it there have optimised for the executive's comfort over their obligations." },
+  { arch:"Justify the tradeoff", stem:"Under compounding failure you can either communicate constantly, keeping everyone informed and yourself interrupted, or communicate at fixed intervals, leaving people uninformed between them. Argue one.",
+    freeform:true,
+    why:"Fixed intervals win, and the reasoning must be that interruption destroys the triage capacity that everyone is depending on. The strongest answers state the interval, announce it at the outset, and hold it. Answers that choose constant communication have optimised for appearing responsive rather than being effective." },
+  { arch:"Spot the error", stem:"In the debrief, a learner says: <em>I should have handled the contract first. That was my mistake.</em> The contract, as it happened, was signed late and nothing came of it. Identify the error in this statement.",
+    freeform:true,
+    why:"The learner is grading their decision by its outcome, which was never in their control, rather than by the information available when they made it. Retrospective outcome-grading produces assistants who become cautious in exactly the situations that require nerve." }
+ ],
+ spaced:[4,6],
+ reading:[
+  ["ESP Triage Reference","Supplied."],
+  ["Thinking in Bets, Annie Duke","Chapter 2. The decision-outcome distinction."]
+ ],
+ instructor:"Do not rescue anyone. The rescue is the only thing that can spoil this session."
+},
+{
+ w:10, slug:"the-longer-game", title:"The Longer Game", phase:2,
+ thesis:"The assistants who become operators are the ones who stopped asking what the task was and started asking what the outcome was.",
+ intro:"Executive support at the highest level is project ownership without formal authority. This session teaches learners to scope complex work, plan it, run it across people who do not report to them, and close it cleanly. It is the session that most directly explains why this career path produces chiefs of staff and chief operating officers, and it extends the Workflow Blueprint into project scaffolding.",
+ objectives:[
+  "Scope a complex piece of work by defining explicitly what it is not.",
+  "Run a project across stakeholders over whom you hold no authority.",
+  "Define the escalation trigger for a project before it is needed."
+ ],
+ outcomes:[
+  "Learners produce a project brief with completion criteria a third party could verify.",
+  "Learners can name the three points at which a project of this shape typically fails."
+ ],
+ flow:[
+  ["0:00","Scope as subtraction. Defining the work by its boundary."],
+  ["0:25","Authority you do not have. Influence, reciprocity, and the standing that competence buys."],
+  ["0:50","Failure modes. Where projects of this shape break, and the early signals."],
+  ["1:10","Closing cleanly. Why most projects end without ending."],
+  ["1:25","Assignment brief and close."]
+ ],
+ activity:"Define It By What It Is Not. Learners scope a deliberately vague executive request using only exclusions, then reconstruct the scope from them.",
+ reflect:"Think of a project you were part of that ended ambiguously. What single sentence, written at the start, would have prevented that?",
+ eob:"workflow-blueprint",
+ assignment:{
+  id:"a10", kind:"Structured deliverable", due:"Friday, Week 10",
+  brief:"Complete a project brief for the supplied complex request. This extends your Workflow Blueprint with the project scaffolding layer.",
+  fields:[
+   "Scope definition, including an explicit statement of what this work is not.",
+   "Stakeholder plan: who is required, what each needs from you, and what you need from each.",
+   "Project plan with milestones, dependencies, and completion criteria a third party could verify.",
+   "The escalation trigger: the condition under which you return this to the executive, defined before it occurs."
+  ],
+  criteria:[
+   ["Boundary clarity","The exclusions are substantive. Excluding the obviously irrelevant scores at insufficient."],
+   ["Authority substitution","The stakeholder plan does not rely on the executive's authority to function."],
+   ["Verifiable completion","Someone who was not involved could determine whether this is finished."],
+   ["Pre-defined trigger","The condition is objective and observable, not a feeling that it is going wrong."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"You are running a cross-functional project. A department head, senior to you, stops responding. Your executive is available but the project was explicitly delegated to you.",
+    opts:[
+     ["A","Escalate to your executive. The delegation does not remove their authority."],
+     ["B","Continue without them and document the non-response."],
+     ["C","Change the ask. Offer them a smaller, specific, time-bound request that is easier to say yes to than to ignore."],
+     ["D","Approach their direct report instead."]
+    ], key:2,
+    why:"A spends your executive's capital on your project and confirms you cannot run it. B protects you and fails the project. D is a real technique and it damages a relationship you will need again. C treats non-response as a design problem in your request rather than a character problem in the recipient, which it usually is." },
+  { arch:"Spot the error", stem:"A project brief states the completion criterion as: <em>The new onboarding process is fully implemented and adopted across the team.</em> Identify the failure.",
+    freeform:true,
+    why:"Neither <em>implemented</em> nor <em>adopted</em> is observable, so the project cannot end, and it will not end. Completion criteria must be things a stranger could check. A usable rewrite specifies a number, a date, and an observer." },
+  { arch:"Justify the tradeoff", stem:"You can deliver a project on time at eighty percent of the intended scope, or two weeks late at full scope. The executive has not stated a preference. Argue one, then state what you would need to know to reverse your answer.",
+    freeform:true,
+    why:"Either answer is acceptable. What is assessed is the second half. The learner must identify that the answer turns entirely on whether the deadline is externally coupled, and that this is a question they could have asked at scoping and did not." }
+ ],
+ spaced:[1,7],
+ reading:[
+  ["ESP Project Scaffolding Templates","Supplied."],
+  ["Influence Without Authority, Cohen and Bradford","Chapter 1 and the reciprocity model."]
+ ],
+ instructor:"This is the session that changes a learner's sense of their own ceiling. Name the career path explicitly. Chief of staff, operations lead, chief operating officer. It is not motivational filler. It is an accurate description of where this competence leads."
+},
+{
+ w:11, slug:"how-to-not-fall-apart", title:"How to Not Fall Apart", phase:2,
+ thesis:"An assistant who burns out has not failed personally. They have failed to build a system, which is the only skill this programme actually teaches.",
+ intro:"This work is demanding in a specific way: it is proximate, it is confidential, and it is frequently performed for people who are themselves under strain. Learners who last are not the resilient ones, they are the systematic ones. This session builds the personal infrastructure that protects professionalism, energy, and ethics across years rather than weeks, and completes the Personal Operating Principles component.",
+ objectives:[
+  "Construct an energy management system that survives a bad week rather than describing a good one.",
+  "State an ethical line and the specific behaviour by which you would hold it under pressure.",
+  "Distinguish a demanding role from an unsustainable placement, using observable indicators."
+ ],
+ outcomes:[
+  "Learners produce a resilience protocol that is executable when they are already depleted.",
+  "Learners can name the point at which they would leave a placement, before they are in one."
+ ],
+ flow:[
+  ["0:00","What actually breaks people in this role. Not workload."],
+  ["0:25","Energy as a designed system. Recovery scheduled, not earned."],
+  ["0:50","The ethical line. Where it sits, and the behaviour that holds it."],
+  ["1:10","Unsustainable placements. Observable indicators, and the exit."],
+  ["1:25","Assignment brief and close."]
+ ],
+ activity:"Write the Exit. Learners write, in advance, the conditions under which they would resign a placement. It is kept. It is referred to at graduation.",
+ reflect:"What is the thing you would be asked to do that you would refuse, even if refusing cost you the role?",
+ eob:"operating-principles",
+ assignment:{
+  id:"a11", kind:"Structured deliverable", due:"Friday, Week 11",
+  brief:"Complete your Personal Operating Principles in full, combining this work with your Week 3 disposition audit.",
+  fields:[
+   "Three non-negotiable professional values, each with the observable behaviour that demonstrates it.",
+   "Your energy management system, described as it operates on your worst week, not your best.",
+   "Your ethical line: what you would never do regardless of instruction, and precisely how you would decline.",
+   "Your resilience protocol: what you do when you are genuinely struggling, and who knows about it."
+  ],
+  criteria:[
+   ["Behavioural anchoring","Every value is attached to a behaviour an observer could verify."],
+   ["Depleted-state viability","The system is executable at low capacity. Systems requiring discipline score at developing."],
+   ["Declination method","The refusal is scripted. Learners who state the line without stating the words have not held it."],
+   ["Support architecture","Someone else knows the protocol. Purely private systems fail silently."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"Six months into a placement you are working consistently past eight in the evening. The work is genuinely necessary. Your executive has never asked you to stay.",
+    opts:[
+     ["A","Raise it with your executive as a workload problem."],
+     ["B","Audit what you are doing after six and determine how much of it is work you have taken on rather than been given."],
+     ["C","Set a hard finish time and let the consequences surface the problem."],
+     ["D","Accept it as the nature of the role at this stage."]
+    ], key:1,
+    why:"A may be correct and is unanswerable without data. C is a real strategy and it uses the executive as the instrument of your boundary. D is the answer that produces a resignation in month eleven. B is the only option that establishes whether this is a workload problem or a scope problem, and they have entirely different remedies." },
+  { arch:"Justify the tradeoff", stem:"Your executive is in genuine personal difficulty and leans on you in ways that exceed the professional relationship. Refusing may harm them. Accepting will harm you. Argue your position.",
+    freeform:true,
+    why:"Strong answers refuse the binary: they identify the specific forms of leaning that are supportable and the specific forms that are not, and they hold the second line while conceding the first. Answers that choose wholesale acceptance or wholesale refusal have not understood that boundaries are drawn around behaviours, not around people." },
+  { arch:"Spot the error", stem:"A learner's resilience protocol reads: <em>When I feel overwhelmed, I take a step back, reassess my priorities, and reach out for support if needed.</em> Identify the failures.",
+    freeform:true,
+    why:"Nothing here is executable. <em>Take a step back</em> is not an action. <em>If needed</em> guarantees it will not happen, because the state that requires support is the state that denies needing it. There is no named person. A functioning protocol says who, when, and in what words." }
+ ],
+ spaced:[3,5],
+ reading:[
+  ["Burnout, Emily and Amelia Nagoski","The completion of the stress cycle. Chapter 1."],
+  ["ESP Placement Sustainability Indicators","Supplied."]
+ ],
+ instructor:"Collect the exit letters. Return them at graduation, unopened by anyone else. Learners consistently report this as the single most consequential artifact of the programme."
+},
+{
+ w:12, slug:"build-your-bible", title:"Build Your Bible", phase:2,
+ thesis:"A portfolio is not a record of what you learned. It is an instrument a client uses to decide whether to trust you.",
+ intro:"Everything produced across eleven weeks converges. This session is a structured assembly sprint: learners integrate six components into a single coherent Executive Operating Blueprint, subject it to quality-circle review, and submit. The Blueprint is what TalentWorks places on. There is no alternative submission and no extension. A learner without a Blueprint does not enter the pool, regardless of every other mark on their record.",
+ objectives:[
+  "Integrate six independently produced components into a document with a single voice and a coherent argument.",
+  "Identify, through structured peer review, the component that is weakest and repair it inside the session.",
+  "Submit to standard."
+ ],
+ outcomes:[
+  "Learners submit a complete Blueprint by the close of Week 12.",
+  "Learners can articulate, in ninety seconds, what their Blueprint claims about them."
+ ],
+ flow:[
+  ["0:00","Coherence. Six components, one professional. Finding the through-line."],
+  ["0:20","Quality circles. Structured peer review against the marking rubric."],
+  ["0:55","Repair sprint. Silent, timed, facilitated."],
+  ["1:20","Submission mechanics. The portal, the deadline, the finality of both."],
+  ["1:30","Close."]
+ ],
+ activity:"Quality Circles. Groups of four. Each learner's weakest component is identified by the group, not by the learner. This is reliably a different component than the learner expected.",
+ reflect:"Read your Partnership Philosophy from Week 1. Would you still sign it?",
+ assignment:{
+  id:"a12", kind:"Capstone submission", due:"Friday, Week 12, 23:59",
+  brief:"Submit your complete Executive Operating Blueprint through the portal. Six components, integrated, coherent, and finished.",
+  fields:[
+   "Partnership Philosophy",
+   "Communication Protocol Suite",
+   "Workflow Blueprint, including stakeholder and project layers",
+   "Decision-Making Protocol, including the confidentiality layer",
+   "Technology Stack",
+   "Personal Operating Principles"
+  ],
+  criteria:[
+   ["Completeness","All six components present. A missing component is a failed submission, not a reduced mark."],
+   ["Coherence","The document argues one position about one professional. Components that contradict one another are marked down heavily."],
+   ["Deployability","A client could read this and know how you would operate in their first week."],
+   ["Voice","It reads as written by a person, and a specific one."]
+  ]
+ },
+ questions:[],
+ gateNote:"The Blueprint is submitted by the close of Week 12. There is no extension and no alternative submission. This is stated at admission and applied without exception.",
+ spaced:[],
+ reading:[
+  ["ESP Blueprint Marking Rubric","Supplied. Read it before assembling, not after."],
+  ["ESP Exemplar Blueprints","Three, at distinguished, proficient, and developing. The developing example is the most instructive."]
+ ],
+ instructor:"Enforce silence in the repair sprint. It is the only forty minutes in the programme where learners are alone with the whole of their own work."
+},
+{
+ w:13, slug:"ready-or-not", title:"Ready or Not", phase:3,
+ thesis:"Excellence that cannot be recognised by a stranger in twenty minutes is, commercially, not yet excellence.",
+ intro:"Formal SCOUTED assessment begins this week. The session prepares learners for the encounter between their capability and the market: how candidates are matched, what a client actually evaluates, and what a placement conversation feels like from the other side of the table. Access Track learners receive an honest account of every pathway available to them, including those outside TalentWorks.",
+ objectives:[
+  "Describe the full placement pathway, including routes that do not run through TalentWorks.",
+  "Position yourself for a specific class of executive rather than for all of them.",
+  "Perform in a simulated placement conversation and absorb the resulting critique."
+ ],
+ outcomes:[
+  "Learners produce a placement-readiness profile that a matcher could act on without a follow-up call.",
+  "Learners introduce themselves as a professional rather than as a candidate."
+ ],
+ flow:[
+  ["0:00","How matching actually works. Track, tools, register, sector, archetype, compensation."],
+  ["0:25","The pathways. TalentWorks, Remoting.work, partner employer networks, and direct approach."],
+  ["0:50","What a client evaluates in the first four minutes."],
+  ["1:05","Simulated placement conversation, observed."],
+  ["1:25","SCOUTED assessment opens. Assignment brief and close."]
+ ],
+ activity:"The Four Minutes. Each learner has four minutes with a facilitator playing a client. The cohort scores the encounter against the client's actual, unstated, criteria, which are revealed afterwards.",
+ reflect:"Write the sentence a client would use to explain why they chose you over an equally qualified candidate.",
+ assignment:{
+  id:"a13", kind:"Structured deliverable", due:"Friday, Week 13",
+  brief:"Complete your placement-readiness profile. This document enters the matching system directly.",
+  fields:[
+   "Your track, EVA or EPA, and the reasoning that is specific to you rather than to the track.",
+   "Three executive types or sectors you are best matched to, with the rationale for each.",
+   "Availability, work mode, compensation expectation, and any constraint stated plainly.",
+   "A single paragraph introducing yourself to a prospective client, written as a professional and not as a job seeker."
+  ],
+  criteria:[
+   ["Self-positioning","The three matches are specific and exclude more than they include."],
+   ["Constraint honesty","Constraints are stated. Discovered constraints end placements."],
+   ["Professional register","The introduction contains no request. It contains a proposition."],
+   ["Actionability","A matcher could shortlist from this profile without contacting the learner."]
+  ]
+ },
+ questions:[
+  { arch:"Scenario-judgment", stem:"In a placement conversation a client asks: <em>What is your biggest weakness?</em>",
+    opts:[
+     ["A","Name a real weakness and the correction you are running."],
+     ["B","Name a weakness that is a strength in context, such as excessive attention to detail."],
+     ["C","Name a real weakness, the correction, and the specific type of executive for whom it would still be disqualifying."],
+     ["D","Ask what weakness would concern them most in this role, and answer against it."]
+    ], key:2,
+    why:"B fails immediately with anyone competent. A is the standard good answer. D is clever and reads as evasion under pressure. C does something the other three do not: it demonstrates that the candidate is evaluating the match as much as the client is, which is the only posture from which an executive support professional can be hired well." },
+  { arch:"Justify the tradeoff", stem:"You are offered a placement at the top of your compensation range with an executive whose register you find difficult, or one at the bottom with an executive you would learn enormously from. Argue one, and state the condition under which you would reverse it.",
+    freeform:true,
+    why:"Either is defensible. The assessed content is the reversal condition, and specifically whether the learner identifies that the difficult register is a fact about the pairing rather than about the executive, and that they have not yet tested whether it is workable in practice." },
+  { arch:"Spot the error", stem:"A learner's client-facing introduction begins: <em>I am an ESP graduate seeking an opportunity to support a dynamic executive where I can grow and add value.</em> Identify every failure.",
+    freeform:true,
+    why:"It leads with the credential rather than the capability, it seeks rather than offers, <em>dynamic</em> describes nobody, and <em>grow and add value</em> places the writer's development ahead of the client's problem. The sentence asks. A professional introduction proposes." }
+ ],
+ spaced:[1,3,8,9],
+ reading:[
+  ["TalentWorks Pool Handbook","Extract. Matching criteria and dossier standard."],
+  ["ESP Placement Pathways Brief","Supplied. All routes, including those outside TalentWorks."]
+ ],
+ instructor:"Be an unkind client in the simulation. Learners who meet an unkind client for the first time in a real conversation lose the placement."
+},
+{
+ w:14, slug:"show-your-work", title:"Show Your Work", phase:3,
+ thesis:"The final assessment is not whether you built something good. It is whether you can stand behind it.",
+ intro:"The last session. Learners present their Executive Operating Blueprint to a small group, defend it under questioning, and receive structured critique. It is not a performance and it is not a celebration. It is a professional review, and it is the final data point in the SCOUTED assessment that determines pool entry and Pool ID. Graduation follows.",
+ objectives:[
+  "Present the Blueprint in seven minutes to a group who have not seen it.",
+  "Defend a design decision under questioning without retreating from it or over-defending it.",
+  "Give critique to a peer that is useful, specific, and survivable."
+ ],
+ outcomes:[
+  "Learners receive a final SCOUTED profile across all seven dimensions.",
+  "Learners who meet the standard enter the pool with a Pool ID and a dossier."
+ ],
+ flow:[
+  ["0:00","Format, standard, and what is being assessed. Restated plainly."],
+  ["0:10","Presentations. Groups of eight to ten. Seven minutes each, five minutes structured feedback."],
+  ["1:15","Facilitator observations to the full cohort."],
+  ["1:25","Graduation, SCOUTED profiles, and what happens on Monday."]
+ ],
+ activity:"The Defence. After each presentation, one peer must ask the question the presenter least wants to be asked. This is assigned, not volunteered.",
+ reflect:"You are now the person described in your Partnership Philosophy, or you are not. Which, and what will you do about it before your first placement?",
+ assignment:{
+  id:"a14", kind:"Presentation and defence", due:"In session, Week 14",
+  brief:"Present your Executive Operating Blueprint to your group. Seven minutes. Defend it for five.",
+  fields:[
+   "A seven-minute presentation covering the through-line of your Blueprint, not a component-by-component tour.",
+   "A defence of one design decision under peer questioning.",
+   "Structured written feedback delivered to two peers using the supplied form."
+  ],
+  criteria:[
+   ["Through-line","The presentation argues one thing about one professional."],
+   ["Defence quality","The decision is held under questioning, or amended for a stated reason. Both score well. Retreat does not."],
+   ["Critique given","Feedback to peers is specific, actionable, and free of both flattery and cruelty."],
+   ["Professional presence","The presenter is the person their Blueprint describes."]
+  ]
+ },
+ questions:[],
+ spaced:[],
+ reading:[
+  ["TalentWorks Pool Handbook","Full. Issued on graduation."]
+ ],
+ instructor:"Assign the hardest question deliberately, and to the presenter who has been least challenged all programme. Graduation is not the moment to become gentle."
+}
+];
+
+/* ---------- ENTRANCE ASSESSMENT ---------- */
+const ENTRANCE = {
+  threshold:"50%",
+  dims:["self-awareness","conceptual-thinking","utilitarian-thinking","drive"],
+  note:"Written, unproctored, and scalable. No interview. Four scenario-response questions of approximately 150 words each. Responses are scored independently against the four entry dimensions of SCOUTED. A composite of 50% or above admits. Below 50% receives a written account of what would need to develop before reapplying. Applicants may reapply once per intake cycle.",
+  qs:[
+   { dim:"self-awareness", stem:"You have supported an executive for three weeks. Every time you summarise a meeting, they quietly rewrite it afterwards without telling you why. What do you do, and what does your response tell you about yourself?",
+     looking:"Whether the applicant asks. Whether they treat the rewrite as data about their work rather than as a judgment of their worth. Applicants who describe feeling discouraged and stopping there score at insufficient. Applicants who describe asking to see the rewrite score at proficient. Applicants who identify what they would have to be true about themselves for this to be a competence problem rather than a preference problem score at distinguished." },
+   { dim:"conceptual-thinking", stem:"Your executive must present to investors in seventy-two hours. They have the data, no structure, no slides, and three other urgent deliverables. Describe how you think about this problem, and what you do first.",
+     looking:"Whether the applicant restructures before acting. The naive response builds slides. The strong response establishes what the investors must believe by the end of the presentation, and works backwards. The distinguished response identifies that one of the three other deliverables is probably deferrable and says which." },
+   { dim:"utilitarian-thinking", stem:"You have four tasks before end of day. One is urgent and takes five minutes. One is not urgent, takes two hours, and is due tomorrow. One is a colleague's request that is not your responsibility. One is something your executive asked for last week and has not mentioned since. Walk through your reasoning for the order.",
+     looking:"Whether the applicant reasons rather than sorts. The forgotten executive request is the trap: it is the item most learners drop and the item most likely to surface badly. The colleague's request is the second trap, and the correct handling is a fast decline, not a silent deprioritisation. Distinguished answers name the cost of the item they place last." },
+   { dim:"drive", stem:"Describe something difficult you finished when stopping would have been reasonable and nobody would have known. What kept you going, and what does that tell you about how you work?",
+     looking:"Specificity and the absence of an audience. Applicants who describe a difficulty with witnesses, deadlines, or consequences have answered a different question. The dimension is measuring what happens when the only person who would know is the applicant." }
+  ]
+};
+
+/* ---------- ASSESSMENT WEIGHTING ---------- */
+const WEIGHTING = [
+  ["Weekly assessments (Weeks 1–13)","20%","Auto-marked. Gates assignment access at 70%. Averaged across the programme."],
+  ["Weekly assignments (Weeks 1–11, 13)","30%","Rubric-marked. Structured, scenario, and tool-build formats."],
+  ["Executive Operating Blueprint","35%","Capstone. Reviewed by assisted first pass, confirmed by a human marker."],
+  ["Blueprint presentation and defence","15%","Week 14. Observed and scored against the full SCOUTED rubric."]
+];
+
+/* ---------- GRADUATION ---------- */
+const GRADUATION = {
+  standard:[
+   "Attendance or verified completion of all fourteen sessions.",
+   "A weekly assessment average of 70% or above.",
+   "All twelve weekly assignments submitted.",
+   "A complete Executive Operating Blueprint submitted by the close of Week 12.",
+   "Presentation and defence of the Blueprint in Week 14."
+  ],
+  pool:"Graduation and pool entry are separate. Graduates receive a certificate and a full SCOUTED profile. Pool entry requires a SCOUTED composite at or above the threshold set for the intake, and is the basis of the Pool ID in the format ESP-S[stream]-[rank]. Graduates who do not enter the pool receive a written account of the gap. Re-entry requires demonstrated development, not a further stream.",
+  badges:[
+   ["Systems","Awarded on a distinguished Workflow Blueprint. Signals deployable operational design."],
+   ["Judgment","Awarded on a distinguished Decision-Making Protocol and a Week 9 account graded at distinguished."],
+   ["Discretion","Awarded on a distinguished Week 6 submission and no confidentiality incident across the programme."],
+   ["Automation","Awarded on a Week 5 workflow that runs, with a correctly identified non-delegable checkpoint."]
+  ]
+};
+
+/* ---------- TRACKS ---------- */
+const TRACKS = [
+ { id:"s12", name:"Standard Cohort", sub:"S12 and successors",
+   rows:[
+    ["Cost","Fee-paying"],
+    ["Duration","Seven weeks"],
+    ["Cadence","Two live sessions weekly, Wednesday and Friday"],
+    ["Cohort size","Small, deliberately capped"],
+    ["Mentorship","One-to-one, throughout"],
+    ["Shadowing","Included"],
+    ["Community","Full cohort community and alumni access"],
+    ["Progression gate","Week 4 payment gate"],
+    ["Placement","TalentWorks pool entry on SCOUTED threshold"]
+   ]},
+ { id:"access", name:"Access Track", sub:"3MTT and TWI cohorts",
+   rows:[
+    ["Cost","Free to participants"],
+    ["Duration","Fourteen weeks"],
+    ["Cadence","One live session weekly, Sunday, recorded"],
+    ["Cohort size","Up to 500 per cohort"],
+    ["Mentorship","Not included"],
+    ["Shadowing","Not included"],
+    ["Community","Not included"],
+    ["Progression gate","Week 8 performance checkpoint"],
+    ["Placement","100 graduates actively matched per 3MTT cohort"]
+   ]}
+];
+
+/* ---------- FAQ ---------- */
+const FAQ = {
+ "For participants":[
+  ["Is the Access Track a shorter or easier version of the paid programme?","No. It is longer, at fourteen weeks against seven, and the assessment standard is identical. What it does not include is one-to-one mentorship, career shadowing, and community access. Those belong to the fee-paying cohort. The training, the Blueprint, the SCOUTED assessment, and the certificate are the same."],
+  ["What happens if I miss a live session?","The recording is available from the Sunday until the Wednesday. Watch tracking applies: the weekly assessment unlocks at 85% completion. Missing the live session costs you the discussion, not the content."],
+  ["What happens if I fail a weekly assessment?","The assessment may be reattempted. The assignment unlocks at 70%. Repeated attempts are recorded and form part of the Openness to Learning assessment, so the reattempt is not free, but it is available."],
+  ["What is the Week 8 checkpoint?","A progression standard. You need a weekly assessment average of 70% or above across Weeks 1 to 8, and all eight assignments submitted. If you are below it you are contacted privately and given one week to complete outstanding work. There is one reassessment. It is stated at admission and applied without exception."],
+  ["Can I get an extension on the Blueprint?","No. It is submitted by the close of Week 12. There is no alternative submission. This is the single rule with no discretion attached to it, and it exists because the Blueprint is what a client sees."],
+  ["Am I guaranteed a placement?","No. For the 3MTT cohort, 100 graduates of 500 are actively matched. Placement is determined by SCOUTED score, Blueprint quality, and fit against live client demand. Every graduate receives their SCOUTED profile and an honest account of where they stand."]
+ ],
+ "For partner organisations":[
+  ["Why is the Access Track fourteen weeks rather than seven?","Because the participants are not full-time learners. One live session per week, recorded, with an asynchronous assessment and assignment cycle, is the structure that produces completion at this scale without lowering the standard. The content is the same. The pacing is not."],
+  ["How is quality maintained at 500 participants?","At four points. A written entrance assessment scored against SCOUTED. Weekly assessments that gate assignment access. A performance checkpoint at Week 8 that removes learners below standard. And a Blueprint capstone reviewed by an assisted first pass and confirmed by a human marker."],
+  ["What is the role of automated marking?","Weekly assessments are marked automatically. Assignments are structured so that completeness is checked automatically and quality is marked against a rubric. The Blueprint receives an assisted first pass which classifies submissions and surfaces every borderline and weak case to a human marker, who confirms or overturns. No learner receives a final Blueprint grade that a human has not confirmed."],
+  ["What data is available to us?","Cohort-level completion, assessment performance, checkpoint outcomes, Blueprint grades, and placement status. Participant-level data is available through the partner view of the portal, subject to the data agreement."],
+  ["Do participants pay anything?","No. Nothing at any stage. The Access Track is funded through the partnership and through a placement-linked revenue model, not by participants."]
+ ],
+ "For facilitators":[
+  ["May I change the session flow?","Yes, within the objectives. The objectives and outcomes are fixed. The route to them is yours."],
+  ["What do I do when a learner argues with SCOUTED in Week 1?","Let them, and give the argument to the cohort. The framework earns authority by surviving challenge. Defending it in Week 1 costs you the room for thirteen weeks."],
+  ["Can I extend a deadline?","Weekly assignments, once, with a reason recorded in the portal. The Blueprint, never."],
+  ["How much of the Week 9 scenario should I rescue?","None. The rescue is the only thing that can spoil the session."]
+ ]
+};
+
+/* ---------- GLOSSARY ---------- */
+const GLOSSARY = [
+ ["Access Track","The free, scaled delivery of ESP built for partner cohorts including 3MTT and TWI. Fourteen weeks, one live session weekly."],
+ ["Blueprint","See Executive Operating Blueprint."],
+ ["Candidate","A graduate admitted to the TalentWorks pool, dossier-ready and available for matching, not yet placed."],
+ ["Checkpoint","The Week 8 progression standard on the Access Track. Replaces the Week 4 payment gate of the standard cohort."],
+ ["Confidentiality tier","A four-level classification of information determining which class of tool and which party may touch it. Introduced in Week 5, applied in Week 6."],
+ ["EOB","See Executive Operating Blueprint."],
+ ["EPA","Executive Personal Assistant. The embedded, in-person track."],
+ ["EVA","Executive Virtual Assistant. The remote, distributed track."],
+ ["Executive Operating Blueprint","The six-component capstone portfolio built across the programme and submitted at Week 12. The instrument TalentWorks uses to place a graduate."],
+ ["Non-delegable checkpoint","The point in an automated workflow at which human judgment cannot be removed without introducing an undetectable error."],
+ ["Pool","The curated group of graduates actively managed and deployed into placements by TalentWorks."],
+ ["Pool ID","A graduate's permanent identifier, formatted ESP-S[stream]-[rank], where rank is determined by SCOUTED composite within the cohort."],
+ ["SCOUTED","The seven-dimension competency framework against which learners are assessed at entry, throughout, and at graduation."],
+ ["Spaced repetition","The reintroduction of earlier assessment items into later weekly assessments, so that retention is tested across the full programme arc rather than week by week."],
+ ["Track","Either EVA or EPA. Both run in the same cohort and share every session. Application, tooling, and simulation diverge."]
+];
+
+/* ---------- RESOURCES ---------- */
+const RESOURCES = [
+ ["Frameworks",[
+  ["SCOUTED Framework","The seven dimensions with full behavioural rubrics.","#/framework/scouted"],
+  ["Escalation Framework","Autonomous, consultative, escalated. Includes the reversibility matrix.","#/session/7"],
+  ["Confidentiality Tiering Model","Four tiers with worked examples.","#/session/5"],
+  ["Stakeholder Tiering Model","Access tiers and triage design.","#/session/8"]
+ ]],
+ ["Templates",[
+  ["Communication Templates","Executive email, meeting record, ambiguity protocol.","#/session/2"],
+  ["Dashboard Component Checklist","The five structural components and the automated checks.","#/assignment/a4"],
+  ["Incident Documentation Template","For confidentiality events, including self-caused ones.","#/session/6"],
+  ["Project Scaffolding Templates","Scope, stakeholder plan, completion criteria, escalation trigger.","#/session/10"],
+  ["Blueprint Assembly Guide","Component integration and the coherence standard.","#/eob"]
+ ]],
+ ["Assessment",[
+  ["Entrance Assessment","Four questions, scoring guidance, threshold.","#/entrance"],
+  ["Blueprint Marking Rubric","Component weightings and band descriptors.","#/eob"],
+  ["Assessment Weighting","How the final mark is composed.","#/assessment"],
+  ["Weekly Assessment Bank","Every item, by session, with spaced repetition tagging.","#/questions"]
+ ]],
+ ["Reading",[
+  ["The Effective Executive, Peter Drucker","Week 1. Chapters 1 and 2.","#/session/1"],
+  ["On Writing Well, William Zinsser","Week 2. Simplicity and clutter.","#/session/2"],
+  ["Co-Intelligence, Ethan Mollick","Week 5. The delegation boundary.","#/session/5"],
+  ["Thinking in Bets, Annie Duke","Week 9. Decision versus outcome.","#/session/9"],
+  ["Influence Without Authority, Cohen and Bradford","Week 10. The reciprocity model.","#/session/10"],
+  ["Burnout, Nagoski and Nagoski","Week 11. Completing the stress cycle.","#/session/11"]
+ ]]
+];
+
+/* =====================================================================
+   HELPERS
+   ===================================================================== */
+const $  = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const esc = s => String(s).replace(/&(?!\w+;|#\d+;)/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const dim = id => SCOUTED.find(d=>d.id===id);
+const sess = w => SESSIONS.find(s=>s.w===+w);
+const eobc = id => EOB.find(e=>e.id===id);
+const allAssignments = () => SESSIONS.map(s=>({s, a:s.assignment}));
+const asgn = id => allAssignments().find(x=>x.a.id===id);
+
+/* progress: in-memory only */
+const completed = new Set();
+
+function crumbs(parts){
+  const out=[];
+  parts.forEach((p,i)=>{
+    if(i) out.push('<span class="sep">/</span>');
+    if(p.href) out.push('<a href="'+p.href+'">'+esc(p.label)+'</a>');
+    else out.push('<span class="cur">'+esc(p.label)+'</span>');
+  });
+  return '<div class="crumbs">'+out.join(" ")+'</div>';
+}
+
+function pager(prev,next){
+  let h='<div class="pager">';
+  h += prev ? '<a href="'+prev.href+'"><div class="dir">Previous</div><div class="ttl">'+esc(prev.label)+'</div></a>' : '<span style="flex:1"></span>';
+  h += next ? '<a class="next" href="'+next.href+'"><div class="dir">Next</div><div class="ttl">'+esc(next.label)+'</div></a>' : '<span style="flex:1"></span>';
+  return h+'</div>';
+}
+
+function questionHTML(q){
+  const out=[];
+  out.push('<div class="q">');
+  out.push('<div class="q-arch">'+esc(q.arch)+'</div>');
+  out.push('<div class="q-stem">'+q.stem+'</div>');
+  if(q.opts){
+    out.push('<ul class="q-opts">');
+    q.opts.forEach((o,i)=>{
+      out.push('<li data-k="'+o[0]+'" class="'+(i===q.key?'key':'')+'">'+o[1]+(i===q.key?' <b style="color:var(--teal)">←</b>':'')+'</li>');
+    });
+    out.push('</ul>');
+  }
+  out.push('<div class="q-why"><b>Marking note.</b> '+q.why+'</div>');
+  out.push('</div>');
+  return out.join("");
+}
+
+function rubricHTML(d){
+  const out=[];
+  out.push('<div class="rub" id="'+d.id+'">');
+  out.push('<div class="rub-head"><div class="rub-name">'+esc(d.name)+'</div><div class="rub-w">'+esc(d.weight)+(d.entry?' · assessed at entry':'')+'</div></div>');
+  const order=[["Distinguished",d.bands.distinguished],["Proficient",d.bands.proficient],["Developing",d.bands.developing],["Insufficient",d.bands.insufficient]];
+  order.forEach(b=>{
+    out.push('<div class="rub-band"><div class="rub-lvl">'+b[0]+'</div><div class="rub-desc">'+esc(b[1])+'</div></div>');
+  });
+  out.push('</div>');
+  return out.join("");
+}
+
+/* =====================================================================
+   VIEWS
+   ===================================================================== */
+const V = {};
+
+V.overview = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview"}]));
+  out.push('<div class="eyebrow">Canonical Reference · Version 2</div>');
+  out.push('<h1>A programme for the people who make <em>everything else</em> possible.</h1>');
+  out.push('<p class="lede">The Executive Support Programme trains high-trust operational partners. Not assistants who execute tasks well, but professionals who hold outcomes, absorb operational load, and make the people they support materially more effective. This document is the complete record of how that is done.</p>');
+
+  out.push('<div class="anchors">');
+  [["Philosophy","#/philosophy"],["The 14 weeks","#/curriculum"],["SCOUTED","#/framework/scouted"],["The Blueprint","#/eob"],["Assessment","#/assessment"],["Tracks","#/tracks"]].forEach(a=>{
+    out.push('<a class="anchor-chip" href="'+a[1]+'">'+a[0]+'</a>');
+  });
+  out.push('</div>');
+
+  out.push('<h2>What this document is</h2>');
+  out.push('<p>This is the canonical reference for ESP. It exists so that a partner organisation, a funder, a facilitator, a participant, or a prospective client can read it once and understand what the programme is, how it works, what it produces, and why each decision was made. It is not marketing and it is not an overview. Where a rule appears here, it is the rule.</p>');
+
+  out.push('<h2>The argument in four sentences</h2>');
+  out.push('<p>Technical capability without operational capacity produces founders who cannot scale and organisations that cannot execute. The support layer that resolves this exists in every high-performing economy and is systematically underdeveloped in Nigeria. ESP builds that layer to a standard high enough that the resulting professionals are placeable globally, not only locally. The programme is selective on purpose, because the value of the credential is the standard behind it.</p>');
+
+  out.push('<h2>Two tracks, one standard</h2>');
+  out.push('<p>ESP runs in two delivery models. They share the SCOUTED framework, the Executive Operating Blueprint, the assessment standard, and the certificate. They differ in cadence, cost, and what surrounds the training. That difference is stated openly to every participant at admission, because a promise that is not kept costs more than a promise that is never made.</p>');
+  out.push('<div class="cards">');
+  TRACKS.forEach(t=>{
+    out.push('<a class="card" href="#/tracks"><div class="card-k">'+esc(t.sub)+'</div><div class="card-t">'+esc(t.name)+'</div><div class="card-d">'+esc(t.rows[1][1])+', '+esc(t.rows[0][1].toLowerCase())+'. '+esc(t.rows[3][1])+'.</div></a>');
+  });
+  out.push('</div>');
+
+  out.push('<h2>Where to begin</h2>');
+  out.push('<div class="cards">');
+  [
+   ["Start here","Programme philosophy","The position on executive support that everything else follows from.","#/philosophy"],
+   ["Structure","The learning journey","Fourteen weeks, four phases, one argument.","#/curriculum"],
+   ["Assessment","SCOUTED","Seven dimensions, full behavioural rubrics.","#/framework/scouted"],
+   ["Capstone","The Blueprint","Six components, and what a client reads in them.","#/eob"],
+   ["Entry","Entrance assessment","Four questions and what they are actually measuring.","#/entrance"],
+   ["Everything","Assessment bank","Every weekly item, with marking notes.","#/questions"]
+  ].forEach(c=>{
+    out.push('<a class="card" href="'+c[3]+'"><div class="card-k">'+c[0]+'</div><div class="card-t">'+c[1]+'</div><div class="card-d">'+c[2]+'</div></a>');
+  });
+  out.push('</div>');
+
+  out.push(pager(null,{href:"#/philosophy",label:"Programme Philosophy"}));
+  return out.join("");
+};
+
+V.philosophy = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Philosophy"}]));
+  out.push('<div class="eyebrow">Foundations</div>');
+  out.push('<h1>Programme <em>philosophy</em></h1>');
+  out.push('<p class="lede">Executive support is not a service performed for a person. It is a system operated alongside one. The distinction is the whole programme.</p>');
+
+  out.push('<h2>The executive support philosophy</h2>');
+  out.push('<p>An executive holds a small number of decisions that only they can make, and a very large number of obligations that surround those decisions. The obligations do not become less real for being secondary. They consume the attention that the decisions require. The purpose of executive support is to hold the obligations so completely that the decisions receive the attention they were owed.</p>');
+  out.push('<p>This has three consequences that shape everything downstream.</p>');
+  out.push('<p><strong>The work is judgment, not execution.</strong> A task can be delegated to anyone competent. An outcome can only be delegated to someone whose judgment you trust. ESP trains for the second condition. Every assignment in this programme asks a learner to decide something, and then to defend the decision.</p>');
+  out.push('<p><strong>The work is proximate.</strong> An assistant is present for an executive at their most strained and least composed. This is not incidental to the role, it is the role, and it is why disposition, discretion, and personal systems are assessed here with the same rigour as tooling and workflow.</p>');
+  out.push('<p><strong>The work is a beginning.</strong> The executive support path has produced chiefs of staff, operations directors, and chief executives, because proximity to decision-making is the fastest available education in how decisions are made. ESP is designed with that ceiling in view. It is why the programme trains people to hold outcomes rather than to complete tasks, and why the final assessment is a defence rather than a submission.</p>');
+
+  out.push('<h2>Educational philosophy</h2>');
+  out.push('<p>Four commitments govern the design of every session.</p>');
+  out.push('<p><strong>Judgment is assessed, memory is not.</strong> No assessment item in this programme asks a learner to recall a definition. Every item places them inside a situation and asks what they would do, why that answer defeats the alternatives, and what it would cost if they were wrong. Wrong answers in this programme are wrong for specific and non-obvious reasons, because the wrong answers a professional actually chooses are always the plausible ones.</p>');
+  out.push('<p><strong>Difficulty is a teaching instrument.</strong> The confidentiality drill in Week 6 is designed so that nobody passes on the first attempt. The simulation in Week 9 is designed to be unfair. A learner who has never failed inside the programme will fail for the first time inside a placement, where it is expensive and unrecoverable.</p>');
+  out.push('<p><strong>Everything produced is evidence.</strong> Assignments are not exercises. Each one is a component of the Executive Operating Blueprint, which is the document a client reads before deciding whether to trust the graduate. Nothing is submitted here that is discarded afterwards.</p>');
+  out.push('<p><strong>Retention is engineered, not hoped for.</strong> Every weekly assessment carries items from earlier weeks. By Week 13 a learner is being tested across the entire programme arc. A learner who understood Week 2 and forgot it has not learned it, and the assessment structure refuses to pretend otherwise.</p>');
+
+  out.push('<h2>Professional standards</h2>');
+  out.push('<p>The programme holds standards because the work does. These are stated at admission and applied without exception.</p>');
+  out.push('<ul>');
+  out.push('<li>Attendance at the live session, or verified completion of the recording to the tracked threshold, is a condition of progression.</li>');
+  out.push('<li>Assignments are submitted by the stated deadline. A late submission without prior notice is a non-submission.</li>');
+  out.push('<li>Cohort communication is professional. A learner is being observed from the first message, because a client will be.</li>');
+  out.push('<li>Session recordings and programme materials are confidential and are not distributed outside the cohort.</li>');
+  out.push('<li>Feedback is developmental. It is received as information, not as injury.</li>');
+  out.push('<li>Problems are raised directly with the programme team, privately and promptly, and not in the group channel.</li>');
+  out.push('</ul>');
+
+  out.push('<h2>Behavioural expectations</h2>');
+  out.push('<p>Three behaviours are treated as non-negotiable because each of them, once broken, cannot be repaired inside a placement.</p>');
+  out.push('<div class="callout"><h4>Discretion</h4><p>A learner who discloses something told to them in confidence, inside the cohort or outside it, is removed from the programme. There is no first warning, because there is no first warning in the profession.</p></div>');
+  out.push('<div class="callout"><h4>Truthfulness under exposure</h4><p>A learner who conceals a mistake is treated more seriously than a learner who made a larger one and disclosed it. The programme rewards disclosure explicitly and repeatedly, so that the instinct exists before it is needed.</p></div>');
+  out.push('<div class="callout"><h4>Completion without supervision</h4><p>Drive carries the highest weighting in SCOUTED for a reason. The single most reliable predictor of a successful placement is whether a person finishes work that nobody is checking.</p></div>');
+
+  out.push(pager({href:"#/overview",label:"Overview"},{href:"#/curriculum",label:"The Learning Journey"}));
+  return out.join("");
+};
+
+V.curriculum = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Learning Journey"}]));
+  out.push('<div class="eyebrow">Programme Roadmap</div>');
+  out.push('<h1>Fourteen weeks, <em>one argument</em></h1>');
+  out.push('<p class="lede">Every session prepares the next. Every assignment becomes a component of the capstone. Nothing here is a standalone class, and the sequence is the pedagogy.</p>');
+
+  out.push('<div class="prog"><div class="prog-bar"><div class="prog-fill" id="progFill"></div></div><div class="prog-labels"><span id="progText">0 of 14 sessions marked complete</span><span>Progress is local to this session</span></div></div>');
+
+  out.push('<div class="spine">');
+  PHASES.forEach((p,pi)=>{
+    out.push('<div class="phase-head"><span class="pn">'+esc(p.n)+'</span><span class="pt">'+esc(p.t)+'</span><span class="pd">'+esc(p.weeks)+'</span></div>');
+    out.push('<p style="padding-left:16px;font-size:14px;margin-bottom:8px;color:var(--text-faint)">'+esc(p.d)+'</p>');
+    SESSIONS.filter(s=>s.phase===pi).forEach(s=>{
+      const cls = s.checkpoint==="gate" ? "gate" : (s.checkpoint==="touch" ? "touch" : "");
+      out.push('<div class="spine-row '+cls+'">');
+      out.push('<div class="spine-wk">W'+String(s.w).padStart(2,"0")+'</div>');
+      out.push('<div class="spine-body">');
+      out.push('<a class="spine-title" href="#/session/'+s.w+'">'+esc(s.title)+'</a>');
+      out.push('<div class="spine-meta">'+esc(s.thesis)+'</div>');
+      if(s.checkpoint==="gate") out.push('<span class="spine-tag">Progression checkpoint</span> ');
+      if(s.checkpoint==="touch") out.push('<span class="spine-tag">Mid-programme checkpoint</span> ');
+      if(s.w===12) out.push('<span class="spine-tag">Blueprint submission</span>');
+      out.push('</div></div>');
+    });
+  });
+  out.push('</div>');
+
+  out.push('<h2>How the weekly cycle runs</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Day</th><th>What happens</th></tr></thead><tbody>');
+  [["Sunday","Live session, ninety minutes, facilitated. Recorded on completion."],
+   ["Sunday to Wednesday","Recording available. Watch tracking applies. The weekly assessment unlocks at 85% completion."],
+   ["Wednesday","Weekly assessment opens. Ten new items and three to five spaced items from earlier weeks. The assignment unlocks at 70%."],
+   ["Wednesday to Friday","Assignment window. Submission through the portal by 23:59 Friday."],
+   ["Saturday","Window closes. Assessments marked. Dashboards updated. Facilitator review begins."]
+  ].forEach(r=>out.push('<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push('<h2>The two checkpoints</h2>');
+  out.push('<div class="callout"><h4>Week 7 · Mid-programme checkpoint</h4><p>The second half of the Week 7 session runs as structured breakout groups of five to six learners. Each presents Blueprint progress and receives peer critique against the marking rubric. It is not graded. It exists so that a learner does not discover in Week 12 that they misunderstood the brief in Week 1.</p></div>');
+  out.push('<div class="callout gate"><h4>Week 8 · Progression checkpoint</h4><p>Phase Three does not open automatically. A learner must hold a weekly assessment average of 70% or above across Weeks 1 to 8 and must have submitted all eight assignments. Learners below standard are contacted privately, given one week to complete outstanding work, and reassessed once. Learners who do not then meet the standard do not continue.</p></div>');
+
+  out.push('<h2>Where each Blueprint component is built</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Component</th><th>Weeks</th><th>Weight</th></tr></thead><tbody>');
+  EOB.forEach(e=>{
+    out.push('<tr><td><a href="#/eob#'+e.id+'" style="color:var(--teal-deep);text-decoration:none">'+esc(e.name)+'</a></td><td>'+e.weeks.map(w=>'Week '+w).join(", ")+'</td><td>'+e.weight+'</td></tr>');
+  });
+  out.push('</tbody></table>');
+
+  out.push(pager({href:"#/philosophy",label:"Programme Philosophy"},{href:"#/session/1",label:"Week 1 · Who Are You Working For?"}));
+  return out.join("");
+};
+
+V.session = (w) => {
+  const s = sess(w);
+  if(!s) return V.notfound();
+  const p = PHASES[s.phase];
+  const prev = sess(s.w-1), next = sess(s.w+1);
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Curriculum",href:"#/curriculum"},{label:p.t,href:"#/curriculum"},{label:"Week "+s.w}]));
+  out.push('<div class="eyebrow">Week '+s.w+' · '+esc(p.n)+' · '+esc(p.t)+'</div>');
+  out.push('<h1>'+esc(s.title)+'</h1>');
+  out.push('<p class="lede">'+esc(s.thesis)+'</p>');
+
+  out.push('<div class="meta-row">');
+  out.push('<span class="pill">90 minutes · live</span>');
+  out.push('<span class="pill">'+esc(s.assignment.kind)+'</span>');
+  if(s.eob) out.push('<span class="pill on">Blueprint: '+esc(eobc(s.eob).name)+'</span>');
+  if(s.checkpoint==="gate") out.push('<span class="pill on">Progression checkpoint</span>');
+  if(s.checkpoint==="touch") out.push('<span class="pill on">Mid-programme checkpoint</span>');
+  if(s.spaced && s.spaced.length) out.push('<span class="pill">Spaced items from W'+s.spaced.join(", W")+'</span>');
+  out.push('</div>');
+
+  out.push('<p>'+esc(s.intro)+'</p>');
+
+  if(s.gate){
+    out.push('<div class="callout gate"><h4>'+esc(s.gate.title)+'</h4><p>'+esc(s.gate.body)+'</p></div>');
+  }
+  if(s.gateNote){
+    out.push('<div class="callout gate"><h4>Submission</h4><p>'+esc(s.gateNote)+'</p></div>');
+  }
+
+  out.push('<h2>Objectives</h2><ul>');
+  s.objectives.forEach(o=>out.push('<li>'+esc(o)+'</li>'));
+  out.push('</ul>');
+
+  out.push('<h2>Learning outcomes</h2>');
+  out.push('<p>By the close of the week, the following is observable rather than asserted.</p><ul>');
+  s.outcomes.forEach(o=>out.push('<li>'+esc(o)+'</li>'));
+  out.push('</ul>');
+
+  out.push('<h2>Session flow</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Time</th><th>Segment</th></tr></thead><tbody>');
+  s.flow.forEach(f=>out.push('<tr><td>'+f[0]+'</td><td>'+f[1]+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push('<h3>Practical exercise</h3>');
+  out.push('<p>'+esc(s.activity)+'</p>');
+
+  out.push('<h3>Reflection prompt</h3>');
+  out.push('<div class="callout"><p>'+esc(s.reflect)+'</p></div>');
+
+  if(s.eob){
+    const e = eobc(s.eob);
+    out.push('<h2>Blueprint contribution</h2>');
+    out.push('<p>This week produces '+(e.weeks.length>1?'part of ':'')+'<strong>'+esc(e.name)+'</strong>. '+esc(e.what)+' It is assessed against '+e.assesses.map(d=>'<a href="#/competency/'+d+'" style="color:var(--teal-deep);text-decoration:none">'+esc(dim(d).name)+'</a>').join(" and ")+'.</p>');
+  }
+
+  out.push('<h2>Assignment</h2>');
+  out.push('<p><strong>'+esc(s.assignment.brief)+'</strong></p>');
+  out.push('<h4>Required</h4><ul>');
+  s.assignment.fields.forEach(f=>out.push('<li>'+esc(f)+'</li>'));
+  out.push('</ul>');
+  out.push('<p><a class="anchor-chip" href="#/assignment/'+s.assignment.id+'">Open the full brief and marking rubric</a></p>');
+
+  if(s.questions && s.questions.length){
+    out.push('<h2>Knowledge check</h2>');
+    out.push('<p>Representative items from the Week '+s.w+' assessment bank. Every item is scored, and every item is accompanied by a marking note explaining why the alternatives fail. Items are drawn from four archetypes and none of them test recall.</p>');
+    s.questions.forEach(q=>out.push(questionHTML(q)));
+    if(s.spaced && s.spaced.length){
+      out.push('<div class="callout"><h4>Spaced repetition</h4><p>The Week '+s.w+' assessment also carries items drawn from '+s.spaced.map(x=>'Week '+x).join(" and ")+'. Retention across the programme arc is assessed, not retention across the week.</p></div>');
+    }
+  }
+
+  out.push('<h2>Reading</h2><ul>');
+  s.reading.forEach(r=>out.push('<li><strong>'+esc(r[0])+'.</strong> '+esc(r[1])+'</li>'));
+  out.push('</ul>');
+
+  out.push('<h2>Instructor note</h2>');
+  out.push('<div class="callout"><p>'+esc(s.instructor)+'</p></div>');
+
+  out.push('<button class="done-btn'+(completed.has(s.w)?' on':'')+'" data-week="'+s.w+'">'+(completed.has(s.w)?'Marked complete':'Mark complete')+'</button>');
+
+  out.push(pager(
+    prev?{href:"#/session/"+prev.w,label:"Week "+prev.w+" · "+prev.title}:{href:"#/curriculum",label:"Learning Journey"},
+    next?{href:"#/session/"+next.w,label:"Week "+next.w+" · "+next.title}:{href:"#/graduation",label:"Graduation"}
+  ));
+  return out.join("");
+};
+
+V.assignments = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Assignments"}]));
+  out.push('<div class="eyebrow">Assessment</div>');
+  out.push('<h1>Every <em>assignment</em></h1>');
+  out.push('<p class="lede">Twelve weekly assignments, one capstone, and one defence. Each is a component of the Blueprint or a rehearsal for it. None is an exercise.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Week</th><th>Assignment</th><th>Format</th><th>Blueprint</th></tr></thead><tbody>');
+  allAssignments().forEach(({s,a})=>{
+    out.push('<tr><td>W'+s.w+'</td><td><a href="#/assignment/'+a.id+'" style="color:var(--teal-deep);text-decoration:none">'+esc(s.title)+'</a></td><td>'+esc(a.kind)+'</td><td>'+(s.eob?esc(eobc(s.eob).name):"None")+'</td></tr>');
+  });
+  out.push('</tbody></table>');
+
+  out.push('<h2>The three assignment formats</h2>');
+  out.push('<p>Assignments on the Access Track are structured so that completeness is verified automatically and quality is marked against a rubric. This is what makes rigour survivable at five hundred learners. It is not a reduction in standard, it is a reduction in the marking labour that does not affect standard.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Format</th><th>What it is</th><th>How it is marked</th></tr></thead><tbody>');
+  [["Structured deliverable","A standardised template with defined required fields. Structure enforces completeness.","Automated completeness check, then rubric-marked."],
+   ["Scenario exercise","A branching decision situation with structured short responses.","Selected responses marked automatically. Structured responses rubric-marked."],
+   ["Tool-build","A live link or artifact the learner actually built.","Objective component checklist, then rubric-marked for design quality."]
+  ].forEach(r=>out.push('<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push(pager({href:"#/curriculum",label:"Learning Journey"},{href:"#/eob",label:"The Blueprint"}));
+  return out.join("");
+};
+
+V.assignment = (id) => {
+  const rec = asgn(id);
+  if(!rec) return V.notfound();
+  const {s,a} = rec;
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Assignments",href:"#/assignments"},{label:"Week "+s.w}]));
+  out.push('<div class="eyebrow">Week '+s.w+' assignment · '+esc(a.kind)+'</div>');
+  out.push('<h1>'+esc(s.title)+'</h1>');
+  out.push('<p class="lede">'+esc(a.brief)+'</p>');
+  out.push('<div class="meta-row"><span class="pill">Due '+esc(a.due)+'</span><span class="pill">'+esc(a.kind)+'</span>'+(s.eob?'<span class="pill on">Blueprint: '+esc(eobc(s.eob).name)+'</span>':'')+'</div>');
+
+  out.push('<h2>Instructions</h2>');
+  out.push('<p>Submit through the portal. Every field below is required. Incomplete submissions are returned unmarked and are treated as late.</p>');
+  out.push('<ol>');
+  a.fields.forEach(f=>out.push('<li>'+esc(f)+'</li>'));
+  out.push('</ol>');
+
+  out.push('<h2>Marking rubric</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Criterion</th><th>What distinguished work looks like</th></tr></thead><tbody>');
+  a.criteria.forEach(c=>out.push('<tr><td>'+esc(c[0])+'</td><td>'+esc(c[1])+'</td></tr>'));
+  out.push('</tbody></table>');
+  out.push('<p>Each criterion is banded distinguished, proficient, developing, or insufficient, using the same descriptors as the <a href="#/framework/scouted" style="color:var(--teal-deep);text-decoration:none">SCOUTED rubric</a>. A single criterion at insufficient caps the assignment at developing regardless of the others.</p>');
+
+  if(s.eob){
+    const e = eobc(s.eob);
+    out.push('<h2>Competencies assessed</h2>');
+    out.push('<div class="cards">');
+    e.assesses.forEach(d=>{
+      const D = dim(d);
+      out.push('<a class="card" href="#/competency/'+D.id+'"><div class="card-k">'+D.weight+' of SCOUTED</div><div class="card-t">'+esc(D.name)+'</div><div class="card-d">'+esc(D.def)+'</div></a>');
+    });
+    out.push('</div>');
+  }
+
+  out.push('<div class="anchors"><a class="anchor-chip" href="#/session/'+s.w+'">Back to Week '+s.w+'</a>'+(s.eob?'<a class="anchor-chip" href="#/eob#'+s.eob+'">'+esc(eobc(s.eob).name)+'</a>':'')+'<a class="anchor-chip" href="#/assignments">All assignments</a></div>');
+
+  const prevA = allAssignments()[allAssignments().findIndex(x=>x.a.id===id)-1];
+  const nextA = allAssignments()[allAssignments().findIndex(x=>x.a.id===id)+1];
+  out.push(pager(
+    prevA?{href:"#/assignment/"+prevA.a.id,label:"Week "+prevA.s.w+" · "+prevA.s.title}:{href:"#/assignments",label:"All assignments"},
+    nextA?{href:"#/assignment/"+nextA.a.id,label:"Week "+nextA.s.w+" · "+nextA.s.title}:{href:"#/graduation",label:"Graduation"}
+  ));
+  return out.join("");
+};
+
+V.framework = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"SCOUTED"}]));
+  out.push('<div class="eyebrow">Graduate Competency Framework</div>');
+  out.push('<h1>SCOUTED</h1>');
+  out.push('<p class="lede">Seven dimensions. Assessed at entry, developed throughout, scored at graduation, and used to match a graduate to a client. The framework is the reason the credential means anything.</p>');
+
+  out.push('<h2>Why seven</h2>');
+  out.push('<p>Each dimension earns its place by predicting something a client cares about that the others do not. Drive carries the highest weighting because it is the most reliable single predictor of placement performance. Self-Awareness carries weight disproportionate to its apparent softness, because it is the dimension that makes every other dimension improvable. A learner who cannot see their own gap cannot close it, and no amount of instruction substitutes.</p>');
+
+  out.push('<h2>Where each is assessed</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Dimension</th><th>Weight</th><th>Entry</th><th>Assessed most heavily</th></tr></thead><tbody>');
+  const heavy = {"self-awareness":"Weeks 1, 3, 11","conceptual-thinking":"Weeks 1, 4, 10","openness-to-learning":"Weeks 7, 12, 14","utilitarian-thinking":"Weeks 7, 8, 9","team-awareness":"Weeks 2, 8, 10","empathy-practice":"Weeks 3, 6, 13","drive":"Every week. Submission behaviour is the measurement."};
+  SCOUTED.forEach(d=>{
+    out.push('<tr><td><a href="#/competency/'+d.id+'" style="color:var(--teal-deep);text-decoration:none">'+esc(d.name)+'</a></td><td>'+d.weight+'</td><td>'+(d.entry?"Yes":"No")+'</td><td>'+heavy[d.id]+'</td></tr>');
+  });
+  out.push('</tbody></table>');
+  out.push('<p>Three dimensions are not assessed at entry. Openness to Learning, Team Awareness, and Empathy Practice all require observation of behaviour over time and cannot be established from a written response. Attempting to assess them at entry would produce a score that measures writing ability rather than the dimension.</p>');
+
+  out.push('<h2>The full rubric</h2>');
+  out.push('<p>Every band descriptor below is behavioural. A marker should be able to place a piece of work without knowing who produced it.</p>');
+  SCOUTED.forEach(d=>{
+    out.push('<h3 id="'+d.id+'">'+esc(d.name)+'</h3>');
+    out.push('<p>'+esc(d.def)+'</p>');
+    out.push(rubricHTML(d));
+  });
+
+  out.push('<h2>From score to Pool ID</h2>');
+  out.push('<p>The SCOUTED composite determines pool entry and rank. A graduate\'s Pool ID takes the form ESP-S[stream]-[rank], so that ESP-S11-001 identifies the highest-scoring graduate of Stream 11. The identifier is permanent and follows the graduate through every placement.</p>');
+
+  out.push(pager({href:"#/curriculum",label:"Learning Journey"},{href:"#/eob",label:"The Blueprint"}));
+  return out.join("");
+};
+
+V.competency = (id) => {
+  const d = dim(id);
+  if(!d) return V.notfound();
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"SCOUTED",href:"#/framework/scouted"},{label:d.name}]));
+  out.push('<div class="eyebrow">Competency · '+d.weight+' of the composite</div>');
+  out.push('<h1>'+esc(d.name)+'</h1>');
+  out.push('<p class="lede">'+esc(d.def)+'</p>');
+  out.push('<div class="meta-row"><span class="pill'+(d.entry?' on':'')+'">'+(d.entry?'Assessed at entry':'Not assessed at entry')+'</span><span class="pill">'+d.weight+' weighting</span></div>');
+
+  out.push('<h2>Behavioural rubric</h2>');
+  out.push(rubricHTML(d));
+
+  const comps = EOB.filter(e=>e.assesses.includes(d.id));
+  if(comps.length){
+    out.push('<h2>Assessed through these Blueprint components</h2>');
+    out.push('<div class="cards">');
+    comps.forEach(e=>{
+      out.push('<a class="card" href="#/eob#'+e.id+'"><div class="card-k">'+e.weeks.map(w=>'Week '+w).join(" · ")+'</div><div class="card-t">'+esc(e.name)+'</div><div class="card-d">'+esc(e.what)+'</div></a>');
+    });
+    out.push('</div>');
+
+    out.push('<h2>And through these assignments</h2>');
+    out.push('<ul>');
+    SESSIONS.filter(s=>s.eob && comps.some(c=>c.id===s.eob)).forEach(s=>{
+      out.push('<li><a href="#/assignment/'+s.assignment.id+'" style="color:var(--teal-deep);text-decoration:none">Week '+s.w+' · '+esc(s.title)+'</a>. '+esc(s.assignment.kind)+'.</li>');
+    });
+    out.push('</ul>');
+  }
+
+  if(d.entry){
+    const q = ENTRANCE.qs.find(x=>x.dim===d.id);
+    if(q){
+      out.push('<h2>How it is assessed at entry</h2>');
+      out.push('<div class="q"><div class="q-arch">Entrance item</div><div class="q-stem">'+q.stem+'</div><div class="q-why"><b>What the marker is reading for.</b> '+esc(q.looking)+'</div></div>');
+    }
+  }
+
+  const i = SCOUTED.findIndex(x=>x.id===id);
+  out.push(pager(
+    i>0?{href:"#/competency/"+SCOUTED[i-1].id,label:SCOUTED[i-1].name}:{href:"#/framework/scouted",label:"SCOUTED"},
+    i<SCOUTED.length-1?{href:"#/competency/"+SCOUTED[i+1].id,label:SCOUTED[i+1].name}:{href:"#/eob",label:"The Blueprint"}
+  ));
+  return out.join("");
+};
+
+V.eob = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"The Blueprint"}]));
+  out.push('<div class="eyebrow">Capstone</div>');
+  out.push('<h1>The Executive Operating <em>Blueprint</em></h1>');
+  out.push('<p class="lede">Six components, built across eleven weeks, assembled in Week 12, and defended in Week 14. It is not a test. It is the document a client reads before deciding whether to trust a graduate with their week.</p>');
+
+  out.push('<h2>What it is for</h2>');
+  out.push('<p>Every assignment in the programme produces a component of this document. Nothing is discarded. By Week 12 a learner is not writing a portfolio, they are integrating one, and the integration is the difficult part: six components produced under different pressures must argue one coherent position about one professional. Components that contradict one another are marked down heavily, because a client will notice the contradiction faster than they notice the quality.</p>');
+
+  out.push('<div class="callout gate"><h4>The one rule with no discretion</h4><p>The Blueprint is submitted by the close of Week 12. There is no extension, no alternative submission, and no exception. A learner without a Blueprint does not enter the pool regardless of every other mark on their record. This is stated at admission, restated in Week 1, and restated in Week 12.</p></div>');
+
+  out.push('<h2>The six components</h2>');
+  EOB.forEach(e=>{
+    out.push('<h3 id="'+e.id+'">'+esc(e.name)+'</h3>');
+    out.push('<p>'+esc(e.what)+'</p>');
+    out.push('<div class="meta-row" style="margin-bottom:14px">');
+    out.push('<span class="pill on">'+e.weight+' of the Blueprint</span>');
+    e.weeks.forEach(w=>out.push('<a class="pill" style="text-decoration:none" href="#/session/'+w+'">Built in Week '+w+'</a>'));
+    e.assesses.forEach(d=>out.push('<a class="pill" style="text-decoration:none" href="#/competency/'+d+'">'+esc(dim(d).name)+'</a>'));
+    out.push('</div>');
+  });
+
+  out.push('<h2>How it is marked</h2>');
+  out.push('<p>The Blueprint carries 35% of the final mark. Marking runs in two passes.</p>');
+  out.push('<p><strong>First pass, assisted.</strong> Every submission is reviewed component by component against the rubric and classified as distinguished, proficient, developing, or borderline. The first pass does not award a final grade. Its only function is triage, and it is calibrated to over-flag rather than under-flag.</p>');
+  out.push('<p><strong>Second pass, human.</strong> A marker reviews every borderline and every developing submission in full, and spot-checks the distinguished ones. No learner receives a final Blueprint grade that a human marker has not confirmed. Written feedback is returned within one week of submission.</p>');
+  out.push('<p>This structure exists because Blueprint marking is the one place in the programme where judgment cannot be reduced to a checklist, and it is also the place where five hundred submissions arrive at once. The assisted pass removes the labour that does not require judgment. It does not remove the judgment.</p>');
+
+  out.push('<h2>Component weighting</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Component</th><th>Weight</th><th>Built in</th><th>Assesses</th></tr></thead><tbody>');
+  EOB.forEach(e=>{
+    out.push('<tr><td>'+esc(e.name)+'</td><td>'+e.weight+'</td><td>'+e.weeks.map(w=>'W'+w).join(", ")+'</td><td>'+e.assesses.map(d=>esc(dim(d).name)).join(", ")+'</td></tr>');
+  });
+  out.push('</tbody></table>');
+
+  out.push('<h2>Marking bands</h2>');
+  out.push('<div class="rub">');
+  [["Distinguished","The document argues one position, in one voice, and a client could operate from it in week one. Design decisions are defended, not asserted. A weakness is named somewhere in it."],
+   ["Proficient","All six components are present, coherent, and deployable. The through-line is discernible. Nothing contradicts."],
+   ["Developing","Components are present and individually sound. They do not argue one position. The document reads as six assignments bound together."],
+   ["Insufficient","A component is missing, or two components contradict one another materially, or the document could describe any graduate."]
+  ].forEach(b=>out.push('<div class="rub-band"><div class="rub-lvl">'+b[0]+'</div><div class="rub-desc">'+esc(b[1])+'</div></div>'));
+  out.push('</div>');
+
+  out.push(pager({href:"#/framework/scouted",label:"SCOUTED"},{href:"#/assessment",label:"Assessment"}));
+  return out.join("");
+};
+
+V.assessment = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Assessment"}]));
+  out.push('<div class="eyebrow">Assessment Philosophy</div>');
+  out.push('<h1>What is <em>measured</em>, and how</h1>');
+  out.push('<p class="lede">Nothing in this programme rewards memory. Every item, every assignment, and every rubric band is written to reward thinking, execution, and professionalism, in that order.</p>');
+
+  out.push('<h2>Weighting</h2>');
+  out.push('<table class="tbl"><thead><tr><th>Component</th><th>Weight</th><th>Method</th></tr></thead><tbody>');
+  WEIGHTING.forEach(r=>out.push('<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push('<h2>The four assessment archetypes</h2>');
+  out.push('<p>Every weekly item belongs to one of four archetypes. No item asks a learner to recall a definition, because no client has ever needed one recalled.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Archetype</th><th>What it measures</th><th>Design rule</th></tr></thead><tbody>');
+  [["Scenario-judgment","Applied judgment under realistic constraint.","Every distractor is a defensible answer. The wrong answers are wrong for specific reasons that are not visible on first reading."],
+   ["Sequencing","Prioritisation when everything appears urgent.","The item most learners rank third is usually first. The item most learners omit is usually the assessment."],
+   ["Spot the error","Whether a learner can apply a standard rather than recite one.","The artifact is competent. The flaw is structural, not cosmetic."],
+   ["Justify the tradeoff","Reasoning quality where two answers are both correct.","The mark is in the concession, not the choice. Answers that dismiss the alternative score below answers that defeat it."]
+  ].forEach(r=>out.push('<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push('<h2>Spaced repetition</h2>');
+  out.push('<p>Each weekly assessment carries ten new items and three to five items drawn from earlier weeks. Every item in the bank is tagged by week and by topic, so that spacing is generated rather than curated. A learner who understood Week 2 and forgot it by Week 7 has not learned it, and the assessment is built to say so.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Week</th><th>Draws spaced items from</th></tr></thead><tbody>');
+  SESSIONS.filter(s=>s.spaced && s.spaced.length).forEach(s=>{
+    out.push('<tr><td>Week '+s.w+'</td><td>'+s.spaced.map(w=>'Week '+w+' · '+sess(w).title).join('<br>')+'</td></tr>');
+  });
+  out.push('</tbody></table>');
+
+  out.push('<h2>Gating</h2>');
+  out.push('<p>The weekly cycle is gated in two places, and both gates exist to prevent a learner from producing work they are not yet equipped to produce.</p>');
+  out.push('<ul>');
+  out.push('<li><strong>Watch threshold.</strong> The weekly assessment unlocks at 85% completion of the session recording. Learners who attended live are credited automatically.</li>');
+  out.push('<li><strong>Assessment threshold.</strong> The assignment unlocks at 70% on the weekly assessment. Reattempts are permitted and recorded, and the record forms part of the Openness to Learning assessment.</li>');
+  out.push('</ul>');
+
+  out.push('<h2>Evidence requirements</h2>');
+  out.push('<p>A completion record is not an assertion. Each of the following is evidenced in the portal and available to the learner and, at cohort level, to the partner organisation.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Claim</th><th>Evidence</th></tr></thead><tbody>');
+  [["Attended or completed the session","Live attendance log, or tracked recording completion at or above 85%."],
+   ["Understood the session","Weekly assessment score at or above 70%, with attempt history."],
+   ["Applied the session","Submitted assignment, rubric-marked, with facilitator feedback."],
+   ["Retained the programme","Performance on spaced items drawn from prior weeks."],
+   ["Can defend the work","Week 14 presentation and defence, observed and scored."]
+  ].forEach(r=>out.push('<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push(pager({href:"#/eob",label:"The Blueprint"},{href:"#/entrance",label:"Entrance Assessment"}));
+  return out.join("");
+};
+
+V.entrance = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Entrance Assessment"}]));
+  out.push('<div class="eyebrow">Admission</div>');
+  out.push('<h1>The entrance <em>assessment</em></h1>');
+  out.push('<p class="lede">Four questions. Approximately 150 words each. No interview. It is designed to be markable at scale and impossible to pass by writing well about nothing.</p>');
+
+  out.push('<div class="meta-row"><span class="pill on">Threshold '+ENTRANCE.threshold+'</span><span class="pill">Four items</span><span class="pill">Written, unproctored</span></div>');
+  out.push('<p>'+esc(ENTRANCE.note)+'</p>');
+
+  out.push('<h2>Why only four dimensions</h2>');
+  out.push('<p>Self-Awareness, Conceptual Thinking, Utilitarian Thinking, and Drive can be read from a written response with reasonable reliability. Openness to Learning, Team Awareness, and Empathy Practice cannot. They require observation of behaviour over time, and any attempt to score them from an essay produces a measurement of writing ability wearing the name of a competency. They are assessed inside the programme instead.</p>');
+
+  out.push('<h2>The four items</h2>');
+  out.push('<p>Each item is written so that the obvious answer is a weak answer. Applicants who have prepared for a standard interview will produce the response the item is designed to catch.</p>');
+  ENTRANCE.qs.forEach(q=>{
+    const D = dim(q.dim);
+    out.push('<div class="q">');
+    out.push('<div class="q-arch">Assessing '+esc(D.name)+'</div>');
+    out.push('<div class="q-stem">'+q.stem+'</div>');
+    out.push('<div class="q-why"><b>What the marker is reading for.</b> '+esc(q.looking)+'</div>');
+    out.push('</div>');
+  });
+
+  out.push('<h2>Scoring</h2>');
+  out.push('<p>Each response is banded distinguished, proficient, developing, or insufficient against the relevant SCOUTED dimension, using the rubric published in full on the <a href="#/framework/scouted" style="color:var(--teal-deep);text-decoration:none">framework page</a>. Bands convert at 100, 75, 45, and 15. The composite is the unweighted mean of the four. Fifty admits.</p>');
+  out.push('<div class="callout"><h4>On the threshold</h4><p>Fifty is deliberately low. The entrance assessment is not the quality filter. It removes applicants who cannot yet think in the register the programme requires, and it does nothing else. The real filter is the Week 8 checkpoint, and it is applied to people who have had eight weeks of teaching rather than one afternoon of writing.</p></div>');
+
+  out.push(pager({href:"#/assessment",label:"Assessment"},{href:"#/questions",label:"Assessment Bank"}));
+  return out.join("");
+};
+
+V.questions = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Assessment Bank"}]));
+  out.push('<div class="eyebrow">Weekly Assessment Bank</div>');
+  out.push('<h1>Every <em>item</em>, with its marking note</h1>');
+  out.push('<p class="lede">Representative items across the programme. Each carries the note explaining why the alternatives fail, because a question whose wrong answers cannot be explained is not testing anything.</p>');
+
+  out.push('<div class="anchors">');
+  SESSIONS.filter(s=>s.questions.length).forEach(s=>out.push('<a class="anchor-chip" href="#wk'+s.w+'">W'+s.w+'</a>'));
+  out.push('</div>');
+
+  SESSIONS.filter(s=>s.questions.length).forEach(s=>{
+    out.push('<h2 id="wk'+s.w+'">Week '+s.w+' · '+esc(s.title)+'</h2>');
+    if(s.spaced && s.spaced.length){
+      out.push('<p style="font-size:13.5px;color:var(--text-faint)">Also carries spaced items from '+s.spaced.map(w=>'Week '+w).join(", ")+'.</p>');
+    }
+    s.questions.forEach(q=>out.push(questionHTML(q)));
+  });
+
+  out.push(pager({href:"#/entrance",label:"Entrance Assessment"},{href:"#/tracks",label:"Tracks"}));
+  return out.join("");
+};
+
+V.tracks = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Tracks"}]));
+  out.push('<div class="eyebrow">Delivery Models</div>');
+  out.push('<h1>Two tracks, <em>one standard</em></h1>');
+  out.push('<p class="lede">The Access Track is not a reduced version of the standard cohort. It is longer, it is free, and it holds the identical assessment standard. What it does not have is the community, and that is said plainly to every participant before they enrol.</p>');
+
+  out.push('<table class="tbl"><thead><tr><th></th><th>Standard Cohort</th><th>Access Track</th></tr></thead><tbody>');
+  TRACKS[0].rows.forEach((r,i)=>{
+    out.push('<tr><td>'+esc(r[0])+'</td><td>'+esc(r[1])+'</td><td>'+esc(TRACKS[1].rows[i][1])+'</td></tr>');
+  });
+  out.push('</tbody></table>');
+
+  out.push('<h2>What is identical</h2>');
+  out.push('<ul>');
+  out.push('<li>The SCOUTED framework and every rubric band within it.</li>');
+  out.push('<li>The Executive Operating Blueprint, its six components, and its marking standard.</li>');
+  out.push('<li>The fourteen sessions, their objectives, and their outcomes.</li>');
+  out.push('<li>The certificate, and what it certifies.</li>');
+  out.push('</ul>');
+
+  out.push('<h2>What differs, and why</h2>');
+  out.push('<p><strong>Cadence.</strong> Access Track participants are not full-time learners. They are 3MTT fellows or TWI participants with existing obligations. One live session per week across fourteen weeks, recorded, produces completion at scale where two sessions per week across seven weeks would produce attrition. The content is not compressed. The pacing is extended.</p>');
+  out.push('<p><strong>The progression gate.</strong> The standard cohort gates on payment at Week 4. The Access Track has no payment, and so it gates on performance at Week 8. Both gates do the same job, which is to ensure that the cohort entering the second half of the programme is a cohort worth teaching.</p>');
+  out.push('<p><strong>Community, mentorship, and shadowing.</strong> These do not scale to five hundred participants without becoming a pretence, and a pretence would be worse than an absence. The Access Track therefore does not offer them, and says so at admission. Rigorous training, a real credential, and a real placement pathway are what is offered, and all three are delivered.</p>');
+
+  out.push('<div class="callout"><h4>On honesty as a design decision</h4><p>It would be straightforward to fill the gap with an automated companion, a chatbot mentor, or a weekly check-in message dressed as care. The programme declines to. A participant who is told plainly what they are receiving can make a good decision about whether to enrol. A participant who is told they have a mentor and discovers a script has been treated badly, and will say so.</p></div>');
+
+  out.push('<h2>Partner cohorts</h2>');
+  out.push('<p>The 3MTT and TWI cohorts run as separate instances on the same infrastructure. They share the curriculum, the assessment bank, and the portal. They do not share a cohort, branding, or reporting. Outcomes are reported to each partner against their own participants only.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Cohort</th><th>Scale</th><th>Placement commitment</th></tr></thead><tbody>');
+  out.push('<tr><td>3MTT</td><td>500 fellows</td><td>100 graduates actively matched</td></tr>');
+  out.push('<tr><td>TWI</td><td>Per partnership agreement</td><td>Per partnership agreement</td></tr>');
+  out.push('</tbody></table>');
+
+  out.push(pager({href:"#/questions",label:"Assessment Bank"},{href:"#/graduation",label:"Graduation"}));
+  return out.join("");
+};
+
+V.graduation = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Graduation"}]));
+  out.push('<div class="eyebrow">Completion</div>');
+  out.push('<h1>Graduation, badges, and <em>the pool</em></h1>');
+  out.push('<p class="lede">Graduation is not the end of the programme. It is the beginning of what the programme was for.</p>');
+
+  out.push('<h2>The graduation standard</h2>');
+  out.push('<p>All five conditions are required. There is no partial graduation.</p><ul>');
+  GRADUATION.standard.forEach(g=>out.push('<li>'+esc(g)+'</li>'));
+  out.push('</ul>');
+
+  out.push('<h2>Graduation and pool entry are not the same thing</h2>');
+  out.push('<p>'+esc(GRADUATION.pool)+'</p>');
+  out.push('<div class="callout"><h4>Learner · Graduate · Candidate · Active</h4><p>A learner becomes a graduate on completion. A graduate becomes a candidate on meeting the pool threshold, at which point they hold a Pool ID and a dossier. A candidate becomes an active executive support professional on placement. Each transition is earned separately, and the programme is explicit that the first does not guarantee the second.</p></div>');
+
+  out.push('<h2>Badges</h2>');
+  out.push('<p>Badges recognise distinguished work in a specific competence. They appear on the graduate dossier and are used by matchers. They are not participation markers and a majority of graduates hold none.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Badge</th><th>Awarded on</th></tr></thead><tbody>');
+  GRADUATION.badges.forEach(b=>out.push('<tr><td>'+esc(b[0])+'</td><td>'+esc(b[1])+'</td></tr>'));
+  out.push('</tbody></table>');
+
+  out.push('<h2>Placement</h2>');
+  out.push('<p>Matching runs against track, tooling, communication register, sector, archetype fit, and compensation. A shortlisted candidate is contacted, their readiness confirmed, and an agreement signed before the client\'s identity is disclosed. The client contracts with TalentWorks. TalentWorks pays the professional.</p>');
+  out.push('<table class="tbl"><thead><tr><th>Pathway</th><th>Indicative compensation</th></tr></thead><tbody>');
+  [["Startup and small enterprise operations","₦150,000 to ₦250,000 monthly"],
+   ["Growth-stage and institutional support","₦300,000 to ₦450,000 monthly"],
+   ["Global remote support","$400 to $800 and above, monthly"]
+  ].forEach(r=>out.push('<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>'));
+  out.push('</tbody></table>');
+  out.push('<p>Placement routes include TalentWorks direct engagement, Remoting.work, partner employer networks, and, for the 3MTT cohort, the 3MTT job demand network. Graduates are given an honest account of every route, including the ones that do not run through TalentWorks.</p>');
+
+  out.push('<div class="callout"><h4>Graduates who do not enter the pool</h4><p>They receive the certificate, the full SCOUTED profile, and a written account of the specific gap. The account names the dimension, the evidence, and what would need to change. Re-entry requires demonstrated development, not a further stream. The door is not closed, and it is not held open by default.</p></div>');
+
+  out.push(pager({href:"#/tracks",label:"Tracks"},{href:"#/faq",label:"Questions"}));
+  return out.join("");
+};
+
+V.faq = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Questions"}]));
+  out.push('<div class="eyebrow">Frequently Asked</div>');
+  out.push('<h1>Questions</h1>');
+  out.push('<p class="lede">Answered for the three audiences who ask them.</p>');
+  Object.keys(FAQ).forEach(k=>{
+    out.push('<h2>'+esc(k)+'</h2>');
+    FAQ[k].forEach(f=>{
+      out.push('<details><summary>'+esc(f[0])+'</summary><p>'+esc(f[1])+'</p></details>');
+    });
+  });
+  out.push(pager({href:"#/graduation",label:"Graduation"},{href:"#/glossary",label:"Glossary"}));
+  return out.join("");
+};
+
+V.glossary = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Glossary"}]));
+  out.push('<div class="eyebrow">Reference</div>');
+  out.push('<h1>Glossary</h1>');
+  out.push('<p class="lede">Every term used in this document, defined once.</p>');
+  out.push('<div class="gloss">');
+  GLOSSARY.forEach(g=>out.push('<div class="gloss-row"><div class="gloss-t">'+esc(g[0])+'</div><div class="gloss-d">'+esc(g[1])+'</div></div>'));
+  out.push('</div>');
+  out.push(pager({href:"#/faq",label:"Questions"},{href:"#/resources",label:"Resources"}));
+  return out.join("");
+};
+
+V.resources = () => {
+  const out=[];
+  out.push(crumbs([{label:"Overview",href:"#/overview"},{label:"Resources"}]));
+  out.push('<div class="eyebrow">Library</div>');
+  out.push('<h1>Resources</h1>');
+  out.push('<p class="lede">Frameworks, templates, assessment instruments, and reading. Everything referenced anywhere in this document is reachable from here.</p>');
+  RESOURCES.forEach(group=>{
+    out.push('<h2>'+esc(group[0])+'</h2>');
+    out.push('<div class="cards">');
+    group[1].forEach(r=>{
+      out.push('<a class="card" href="'+r[2]+'"><div class="card-k">'+esc(group[0])+'</div><div class="card-t">'+esc(r[0])+'</div><div class="card-d">'+esc(r[1])+'</div></a>');
+    });
+    out.push('</div>');
+  });
+  out.push(pager({href:"#/glossary",label:"Glossary"},{href:"#/overview",label:"Overview"}));
+  return out.join("");
+};
+
+V.notfound = () => crumbs([{label:"Overview",href:"#/overview"},{label:"Not found"}]) + '<h1>Not found</h1><p>That page does not exist in this document. Return to the <a href="#/overview" style="color:var(--teal-deep)">overview</a>.</p>';
+
+/* =====================================================================
+   NAV
+   ===================================================================== */
+function buildNav(){
+  const out=[];
+  out.push('<div class="nav-group"><div class="nav-label">Programme</div>');
+  [["Overview","#/overview"],["Philosophy","#/philosophy"],["Learning journey","#/curriculum"],["Tracks","#/tracks"]].forEach(l=>out.push('<a class="nav-link" href="'+l[1]+'">'+l[0]+'</a>'));
+  out.push('</div>');
+
+  out.push('<div class="nav-group"><div class="nav-label">Curriculum</div>');
+  PHASES.forEach((p,pi)=>{
+    out.push('<div class="tree-phase" data-phase="'+pi+'">');
+    out.push('<button class="tree-toggle" aria-expanded="false"><svg class="chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 1.5L7 5l-3.5 3.5"/></svg>'+esc(p.t)+'</button>');
+    out.push('<div class="tree-body">');
+    SESSIONS.filter(s=>s.phase===pi).forEach(s=>{
+      out.push('<a class="tree-link" href="#/session/'+s.w+'"><span class="tree-wk">W'+String(s.w).padStart(2,"0")+'</span><span>'+esc(s.title)+'</span></a>');
+    });
+    out.push('</div></div>');
+  });
+  out.push('</div>');
+
+  out.push('<div class="nav-group"><div class="nav-label">Assessment</div>');
+  [["SCOUTED framework","#/framework/scouted"],["The Blueprint","#/eob"],["Assessment design","#/assessment"],["Entrance assessment","#/entrance"],["Assessment bank","#/questions"],["All assignments","#/assignments"]].forEach(l=>out.push('<a class="nav-link" href="'+l[1]+'">'+l[0]+'</a>'));
+  out.push('</div>');
+
+  out.push('<div class="nav-group"><div class="nav-label">Competencies</div>');
+  SCOUTED.forEach(d=>out.push('<a class="nav-link" href="#/competency/'+d.id+'">'+esc(d.name)+'</a>'));
+  out.push('</div>');
+
+  out.push('<div class="nav-group"><div class="nav-label">Reference</div>');
+  [["Graduation","#/graduation"],["Questions","#/faq"],["Glossary","#/glossary"],["Resources","#/resources"]].forEach(l=>out.push('<a class="nav-link" href="'+l[1]+'">'+l[0]+'</a>'));
+  out.push('</div>');
+
+  $("#nav").innerHTML = out.join("");
+
+  $$(".tree-toggle").forEach(b=>{
+    b.addEventListener("click",()=>{
+      const ph = b.parentElement;
+      const open = ph.classList.toggle("open");
+      b.setAttribute("aria-expanded", open?"true":"false");
+    });
+  });
+}
+
+function syncNav(hash){
+  $$(".nav-link,.tree-link").forEach(a=>{
+    a.classList.toggle("active", a.getAttribute("href")===hash);
+  });
+  const active = $(".tree-link.active");
+  if(active){
+    const ph = active.closest(".tree-phase");
+    if(ph && !ph.classList.contains("open")){
+      ph.classList.add("open");
+      ph.querySelector(".tree-toggle").setAttribute("aria-expanded","true");
+    }
+  }
+}
+
+/* =====================================================================
+   SEARCH
+   ===================================================================== */
+const INDEX = [];
+function buildIndex(){
+  INDEX.push({kind:"Page",t:"Overview",h:"#/overview",b:"canonical reference esp mosaic executive support programme"});
+  INDEX.push({kind:"Page",t:"Programme philosophy",h:"#/philosophy",b:"educational philosophy professional standards behavioural expectations discretion truthfulness drive"});
+  INDEX.push({kind:"Page",t:"Learning journey",h:"#/curriculum",b:"roadmap phases weekly cycle checkpoints fourteen weeks"});
+  INDEX.push({kind:"Page",t:"Tracks",h:"#/tracks",b:"access track s12 3mtt twi free scaled community mentorship"});
+  INDEX.push({kind:"Page",t:"Assessment design",h:"#/assessment",b:"weighting archetypes spaced repetition gating evidence"});
+  INDEX.push({kind:"Page",t:"Entrance assessment",h:"#/entrance",b:"admission threshold four questions scoring"});
+  INDEX.push({kind:"Page",t:"Assessment bank",h:"#/questions",b:"questions items marking notes"});
+  INDEX.push({kind:"Page",t:"Executive Operating Blueprint",h:"#/eob",b:"capstone six components marking bands assisted first pass"});
+  INDEX.push({kind:"Page",t:"SCOUTED framework",h:"#/framework/scouted",b:"seven dimensions rubric pool id"});
+  INDEX.push({kind:"Page",t:"Graduation",h:"#/graduation",b:"badges pool placement candidate dossier compensation"});
+  INDEX.push({kind:"Page",t:"Questions",h:"#/faq",b:"faq participants partners facilitators"});
+  INDEX.push({kind:"Page",t:"Glossary",h:"#/glossary",b:"terms definitions"});
+  INDEX.push({kind:"Page",t:"Resources",h:"#/resources",b:"templates frameworks reading library"});
+  INDEX.push({kind:"Page",t:"All assignments",h:"#/assignments",b:"assignments formats"});
+
+  SESSIONS.forEach(s=>{
+    INDEX.push({kind:"Week "+s.w, t:s.title, h:"#/session/"+s.w, b:(s.thesis+" "+s.intro+" "+s.objectives.join(" ")+" "+s.activity).toLowerCase()});
+    INDEX.push({kind:"Assignment · W"+s.w, t:s.assignment.brief.slice(0,64)+"…", h:"#/assignment/"+s.assignment.id, b:(s.assignment.kind+" "+s.assignment.fields.join(" ")).toLowerCase()});
+  });
+  SCOUTED.forEach(d=>INDEX.push({kind:"Competency", t:d.name, h:"#/competency/"+d.id, b:d.def.toLowerCase()}));
+  EOB.forEach(e=>INDEX.push({kind:"Blueprint component", t:e.name, h:"#/eob#"+e.id, b:e.what.toLowerCase()}));
+  GLOSSARY.forEach(g=>INDEX.push({kind:"Glossary", t:g[0], h:"#/glossary", b:g[1].toLowerCase()}));
+}
+
+function runSearch(q){
+  const box = $("#searchResults");
+  const term = q.trim().toLowerCase();
+  if(term.length < 2){ box.classList.remove("open"); box.innerHTML=""; return; }
+  const hits = INDEX.filter(x=> x.t.toLowerCase().includes(term) || x.b.includes(term) || x.kind.toLowerCase().includes(term)).slice(0,12);
+  if(!hits.length){ box.innerHTML='<div class="sr-empty">Nothing matches that.</div>'; box.classList.add("open"); return; }
+  box.innerHTML = hits.map(h=>'<a class="sr-item" href="'+h.h+'"><div class="sr-kind">'+esc(h.kind)+'</div><div class="sr-title">'+esc(h.t)+'</div></a>').join("");
+  box.classList.add("open");
+  $$(".sr-item",box).forEach(a=>a.addEventListener("click",()=>{ box.classList.remove("open"); $("#search").value=""; }));
+}
+
+/* =====================================================================
+   PROGRESS
+   ===================================================================== */
+function updateProgress(){
+  const fill = $("#progFill"), txt = $("#progText");
+  if(!fill) return;
+  const pct = Math.round((completed.size/14)*100);
+  fill.style.width = pct+"%";
+  txt.textContent = completed.size+" of 14 sessions marked complete";
+}
+
+/* =====================================================================
+   ROUTER
+   ===================================================================== */
+function render(){
+  const raw = location.hash || "#/overview";
+  const [path, frag] = raw.slice(2).split("#");
+  const seg = path.split("/").filter(Boolean);
+  let html;
+
+  switch(seg[0]){
+    case undefined:
+    case "overview":   html = V.overview(); break;
+    case "philosophy": html = V.philosophy(); break;
+    case "curriculum": html = V.curriculum(); break;
+    case "session":    html = V.session(seg[1]); break;
+    case "assignments":html = V.assignments(); break;
+    case "assignment": html = V.assignment(seg[1]); break;
+    case "framework":  html = V.framework(); break;
+    case "competency": html = V.competency(seg[1]); break;
+    case "eob":        html = V.eob(); break;
+    case "assessment": html = V.assessment(); break;
+    case "entrance":   html = V.entrance(); break;
+    case "questions":  html = V.questions(); break;
+    case "tracks":     html = V.tracks(); break;
+    case "graduation": html = V.graduation(); break;
+    case "faq":        html = V.faq(); break;
+    case "glossary":   html = V.glossary(); break;
+    case "resources":  html = V.resources(); break;
+    default:           html = V.notfound();
+  }
+
+  const view = $("#view");
+  view.innerHTML = html;
+  syncNav("#/"+path);
+  updateProgress();
+
+  const btn = $(".done-btn");
+  if(btn){
+    btn.addEventListener("click",()=>{
+      const w = +btn.dataset.week;
+      if(completed.has(w)){ completed.delete(w); btn.classList.remove("on"); btn.textContent="Mark complete"; }
+      else { completed.add(w); btn.classList.add("on"); btn.textContent="Marked complete"; }
+    });
+  }
+
+  if(frag){
+    const el = document.getElementById(frag);
+    if(el){ el.scrollIntoView(); return; }
+  }
+  window.scrollTo(0,0);
+  view.focus({preventScroll:true});
+  $("#sidebar").classList.remove("open");
+  $("#scrim").classList.remove("on");
+}
+
+/* =====================================================================
+   BOOT
+   ===================================================================== */
+buildNav();
+buildIndex();
+window.addEventListener("hashchange", render);
+
+$("#search").addEventListener("input", e=>runSearch(e.target.value));
+$("#search").addEventListener("blur", ()=> setTimeout(()=> $("#searchResults").classList.remove("open"), 160));
+document.addEventListener("keydown", e=>{
+  if((e.metaKey||e.ctrlKey) && e.key==="k"){ e.preventDefault(); $("#search").focus(); }
+  if(e.key==="Escape"){ $("#searchResults").classList.remove("open"); }
+});
+
+const themeBtn = $("#themeBtn");
+themeBtn.addEventListener("click",()=>{
+  const cur = document.documentElement.getAttribute("data-theme");
+  const next = cur==="dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  themeBtn.textContent = next==="dark" ? "Light" : "Dark";
+});
+
+$("#burger").addEventListener("click",()=>{
+  $("#sidebar").classList.add("open");
+  $("#scrim").classList.add("on");
+});
+$("#scrim").addEventListener("click",()=>{
+  $("#sidebar").classList.remove("open");
+  $("#scrim").classList.remove("on");
+});
+
+render();
+</script>
+</body>
+</html>
